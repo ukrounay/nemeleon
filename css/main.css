@@ -1,2 +1,15 @@
+body, html {padding: 0px; margin: 0px;}
 #navigation {position: sticky; height: 40px; background-color: #373737;}
-#navigation a {color: white; background-color: #111111; border-radius: 6px; font-size: 12px; padding: 8px 10px 10px;}
+.navlink {
+  font-family: sans-serif;
+  display: inline-block;
+  color: white;
+  background-color: #111111;
+  border-radius: 6px;
+  font-size: 18px;
+  padding: 8px 10px 10px;
+  position: relative; top: 50%;
+  transform: translate(0%,-50%);
+}
+.navlink.left {float: left;}
+.navlink.right {float: right;}
