@@ -11,5 +11,5 @@ body, html {padding: 0px; margin: 0px;}
   position: relative; top: 50%;
   transform: translate(0%,-50%);
 }
-.navlink.left {float: left;}
-.navlink.right {float: right;}
+.navlink.left { float: left; }
+.navlink.right { float: right; }
