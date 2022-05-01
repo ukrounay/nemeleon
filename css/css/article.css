@@ -1,0 +1,192 @@
+@import url(fonts.css);
+@import url(colors.css);
+.hover {position: fixed; top: 0px; left: 0px; width: 100%; height: 100% !important;}
+* {transition: 0.1s; box-sizing: border-box;}
+body, html {padding: 0px; margin: 0px; overflow: hidden;}
+html { scroll-behavior: smooth;}
+a {text-decoration: none;}
+#site {max-width: 1100px; margin: auto; padding: 20px; font-size: 110%; display: grid; grid-template-columns: 3fr 1fr;}
+#parsed-text div, iframe {display: block; width: 100%;}
+#navigation-right {margin-left: 20px;}
+#navigation-top {transition: 0.2s; position: sticky; height: 60px; z-index: 10;}
+.shadow {box-shadow: var(--shadow);}
+#navigation-index {transition: 0.2s; background-color: var(--main-bg-color); height: 60px; }
+#nav-cont {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 210px 1fr;
+}
+#article-title{
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+}
+#logo { transition: 0.4s; display: inline-block; height: 40px; margin: 10px; vertical-align: middle; cursor: pointer;}
+.nav-logo {fill: var(--main-color);}
+.nav-logo:first-child {fill: var(--accent);}
+#linkbox {display: inline-block; vertical-align: middle; text-align: right;}
+.dark footer {background-color: var(--main-bg-color);}
+.light footer {background-color: var(--accent);}
+header {display: flex; flex-wrap: wrap; max-width: 1100px; margin: auto; padding: 20px 20px 0px 20px;}
+#breadcrumps {flex: 100%;}
+#breadcrumps p {line-height: 1.0; height: 24px; margin: 16px 0px;}
+#text a {color: var(--main-color); text-decoration: underline; text-decoration-color: var(--accent);}
+.dark #text a:hover {color: var(--accent);}
+#article-image { flex: 100%; height: 280px; border-radius: 20px; background-image: url(img/image.jpg); background-size: cover; background-position: center;}
+#text h1, #text h2, #text h3, .newsHeading {
+    font-size: 1.5em; 
+    padding: 10px 12px 12px;
+    color: var(--main-color);
+    display: block;
+    border-radius: 6px;
+    cursor: pointer;
+}
+#text h1:hover, #text h2:hover, #text h3:hover, .newsHeading:hover {background-color: var(--items-hover-color);}
+#text h1:hover:after, #text h2:hover:after, #text h3:hover:after, .newsHeading:hover:after {
+    content: "";
+    position: relative;
+    display: inline-block;
+    background: url("img/link.svg") no-repeat;
+    width: 20px;
+    height: 20px;
+    top: 0.5em; 
+    transform: translate(0%,-50%);
+    margin-left: 5px;
+}
+#text {font-size: 1.1em;}
+.menulink { 
+    line-height: 1.0;
+    position: relative;
+    padding: 10px 12px 12px;
+    color: var(--main-color);
+    font-size: 16px;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 6px;
+    margin: 11px 0px;
+    cursor: pointer;
+}
+.menulink:hover {background-color: var(--items-hover-color);}
+.menulink.active {border-bottom: 1px solid ;}
+.hover-drop {display: inline-block; position: relative; margin: 0px 5px;}
+.dropbox {
+    display: none;
+    position: absolute;
+    right: 0px;
+    background-color: var(--main-bg-color);    
+    color: var(--main-color);
+    margin-top: 0px;
+    padding: 4px;
+    border-radius: 6px;
+}
+.dropbox a {display: block; text-align: center; margin: 0px;}
+
+
+
+#menu-btn {display: inline-block; vertical-align: top; margin: 0px 5px;}
+.bars {
+    display: grid;
+    grid-template-rows: 6px 4px 6px;
+    margin: 11px 0px;
+
+}
+.bar {
+    background-color: var(--accent);
+    height: 6px;
+    width: 20px;
+    border-radius: 10px;
+    margin: 0px 4px;
+}
+
+i {color: var(--accent) !important;}
+.progress-container {
+  width: 100%;
+  height: 4px;
+  position: fixed; 
+  bottom: 0px;
+}
+.progress-bar {
+    transition: 0.1s;
+    height: 6px;
+    background: var(--accent);
+    width: 0%;
+    opacity: 0.5;
+}
+#topbtn {
+    transition: 0.3s;
+    position: fixed; 
+    bottom: 0px; 
+    right: 0px; 
+    z-index: 9; 
+    border: none;
+    outline: none; 
+    background-color: var(--main-bg-color); 
+    color: var(--accent);
+    width: 50px;
+    height: 100%;
+    font-size: 18px; 
+    opacity: 0.7;
+}
+#topbtn:hover { background-color: var(--items-hover-color); }
+
+#dot-container {position: sticky; top: 70px;}
+#dot-container p {display: inline-block; color: var(--main-color); vertical-align: middle; margin: 10px; line-height: 1.0;}
+#dot-container p:hover {text-decoration: underline;}
+#dot-container a {display: grid; text-decoration: none; grid-template-columns: 20px 1fr;}
+.dot {
+    position: relative; 
+    top: 50%;
+    transform: translate(0%,-50%);
+    margin: 0px 5px;
+    display: block;
+    width: 10px; 
+    height: 10px; 
+    border: 5px solid transparent;
+    border-radius: 100%; 
+    background-color: var(--items-hover-color); 
+    transition: 0.5s; 
+    cursor: pointer;
+}
+#inner-contentnav {
+    display: none;
+    background-color: var(--container-color);
+    padding: 20px;
+    border-radius: 20px;
+}
+#inner-contentnav li {display: block;}
+#inner-contentnav h3 {line-height: 1.0; height: 24px; margin: 10px 0px;}
+#inner-contentnav a {color: var(--main-color); padding: 4px 6px; margin: 2px 0px; border-radius: 6px; display: block;}
+#inner-contentnav a:hover {background-color: var(--items-hover-color);}
+.light #inner-contentnav a:hover {background-color: var(--main-bg-color);}
+.dark #inner-contentnav a:hover {color: var(--accent);}
+.dot.active {height: 20px; width: 20px; background-color: var(--accent); border: 5px solid var(--items-hover-color); margin: 0px;}
+@media screen and (max-width:1200px) {
+    #site {width: auto; max-width: none; margin: 0px 40px;}
+}
+@media screen and (max-width: 1000px) {
+    #inner-contentnav {display: block;}
+}
+@media screen and (max-width: 950px) {
+    #site {display: block;}
+    #navigation-right {display: none;}
+}
+@media screen and (min-width:850px) {
+    #menu-btn {display: none !important;}
+}
+@media screen and (max-width: 850px) {
+    .hide1 {display: none !important;}
+}
+@media screen and (max-width: 750px) {
+    .hide2 {display: none !important;}
+}
+@media screen and (max-width: 650px) {
+    .hide3 {display: none !important;}
+    #site {margin: 0px;}
+    #topbtn {height: 50px; bottom: 20px; right: 10px; border-radius: 8px; background-color: var(--main-bg-color);}
+}
+@media screen and (max-width: 400px) {
+    #navigation-top, #nav-cont, #linkbox {height: 40px;}
+    #logo {height: 30px; margin: 5px;}
+    #theme-btn {display: none;}
+    .bars.menulink {margin: 0px; border-radius: 0px;}
+}

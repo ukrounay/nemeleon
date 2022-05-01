@@ -1,0 +1,329 @@
+/* fonts */
+/* 
+
+це я робив офлайн шрифти, бо інет в селі ні разу не стабільний(
+
+    тут можна підключити шрифти з гугл фонтс, якщо розкоментувати цей імпорт -->
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@100;200;300;400;500;600;700;800&family=Anonymous+Pro:wght@400;700&family=Didact+Gothic&family=Jura:wght@300;400;500;600;700&family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&family=Orelega+One&family=Play:wght@400;700&family=Rubik+Mono+One&family=Russo+One&family=Tenor+Sans&family=Yeseva+One&display=swap');
+    і закоментувати всі font-face знизу.
+
+font-family: 'Didact Gothic', sans-serif;
+font-family: 'Montserrat Alternates', sans-serif;
+font-family: 'Play', sans-serif;
+font-family: 'Russo One', sans-serif;
+*/
+
+@font-face {
+    font-family: 'Didact Gothic';
+    src: url(fonts/DidactGothic-Regular.ttf);
+}
+@font-face {
+    font-family: 'Montserrat Alternates';
+    src: url(fonts/MontserratAlternates-Regular.ttf);
+}
+@font-face {
+    font-family: 'Play';
+    src: url(fonts/Play-Regular.ttf);
+}
+@font-face {
+    font-family: 'Russo One';
+    src: url(fonts/RussoOne-Regular.ttf);
+}
+body {font-family: 'Play', sans-serif;}
+#navigation-top a{font-family: 'Montserrat Alternates', sans-serif;}
+#article-title{font-family: 'Russo One', sans-serif; font-weight: normal;}
+#text h2{font-family: 'Montserrat Alternates', sans-serif;}
+
+/* end fonts */
+
+
+
+/* var */
+
+/* 
+    змінні це просто прекрасно для реалізації кольорів на сайті)
+    я коли не знав про змінні, приходилось прописувати для кожного елемента по кілька режимів, це взагалі капець
+    (це я так зробив у портфоліо, і це дуууже нераціонально)
+*/
+
+:root {
+    --accent: #10aaaa;
+    
+}
+@media (prefers-color-scheme: dark) { 
+    .auto, .auto * {
+        --main-color: #bbb;
+        --main-bg-color: #202020;
+        --container-color: #353535;
+        --items-hover-color: #353535;
+        --border-color: #dddddd50;
+    }
+    .auto footer {background-color: var(--main-bg-color);}
+}
+.dark, .dark * {
+    --main-color: #bbb;
+    --main-bg-color: #202020;
+    --container-color: #353535;
+    --items-hover-color: #353535;
+    --border-color: #dddddd50;
+}
+@media (prefers-color-scheme: light) { 
+    .auto, .auto * {
+        --main-color: #202020;
+        --main-bg-color: #f7f7f7;
+        --container-color: #fff;
+        --items-hover-color: #d7d7d7;
+        --border-color: #37373750;
+    }
+    .auto footer {background-color: var(--accent);}
+}
+.light, .light * {
+    --main-color: #202020;
+    --main-bg-color: #fff;
+    --container-color: #ddd;
+    --items-hover-color: #ddd;
+    --border-color: #37373750;
+}
+.light, .dark, .auto {background-color: var(--main-bg-color); color: var(--main-color);}
+
+/* end var */
+
+
+
+/* all */
+
+* {transition: 0.1s; box-sizing: content-box;}
+html *::-webkit-scrollbar { 
+    width: 0;
+    height: 0;
+} 
+body, html {padding: 0px; margin: 0px; scrollbar-width: none;}
+html { scroll-behavior: smooth;}
+a {text-decoration: none;}
+section {height: 500px; width: 100%;}
+::-moz-selection {background-color: var(--accent); color: var(--main-bg-color);}
+::selection {background-color: var(--accent); color: var(--main-bg-color);}
+
+/* end all */
+
+
+
+/* nav */
+#nav-ph {
+    width: 100%;
+    height: 60px;
+    background-color: var(--main-bg-color);
+}
+#nav-bg {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 60px;
+    z-index: 0;
+    background-color: var(--main-bg-color);
+}
+.shadow {box-shadow: 0px 0px 2px var(--border-color);}
+#navigation-top {
+    transition: 0.2s; 
+    position: fixed; 
+    top: 0px; 
+    left: 50%;
+    transform: translate(-50%,0%);
+    width: 100%;
+    height: 60px; 
+    z-index: 10;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 210px 1fr;
+}
+@media screen and (min-width: 1000px) {
+    #navigation-top { width: 1000px; }    
+}
+#logo { transition: 0.4s; display: inline-block; height: 40px; margin: 10px; vertical-align: middle; cursor: pointer;}
+.nav-logo {fill: var(--main-color);}
+.nav-logo:first-child {fill: var(--accent);}
+#linkbox {display: inline-block; vertical-align: middle; text-align: right;}
+
+.menulink { 
+    line-height: 1.0;
+    position: relative;
+    padding: 10px 12px 12px;
+    color: var(--main-color);
+    font-size: 16px;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 6px;
+    margin: 11px 0px;
+    cursor: pointer;
+}
+.menulink:hover {background-color: var(--items-hover-color);}
+.menulink.active {border-bottom: 1px solid ;}
+.hover-drop {display: inline-block; position: relative; margin: 0px 5px;}
+.dropbox {
+    display: none;
+    position: absolute;
+    right: 0px;
+    background-color: var(--main-bg-color);    
+    color: var(--main-color);
+    margin-top: 0px;
+    padding: 4px;
+    border-radius: 6px;
+}
+.dropbox a {display: block; text-align: center; margin: 0px;}
+
+
+
+#menu-btn { display: inline-block; vertical-align: top; margin: 0px 5px;}
+.bars {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 4px;
+    margin: 11px 0px;
+    background-color: transparent !important;
+}
+.bar {
+    background-color: var(--accent);
+    height: 6px;
+    width: 20px;
+    border-radius: 10px;
+    margin: 0px 4px;
+}
+
+i {color: var(--accent) !important; background-color: transparent !important;}
+
+/* end nav */
+
+
+/* preloader */
+
+#hoverbox {
+    position: fixed; 
+    top: 0px; 
+    left: 0px; 
+    height: 100%; 
+    width: 100%; 
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    transition: 0.7s;
+}
+.loader {
+    position: absolute; 
+    height: 120px; 
+    width: 120px; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%,-50%); 
+    transition: 1s;
+}
+.loader svg {width: 100%;  transition: 1s;}
+#hellotext {
+    text-align: center; 
+    color: var(--main-color); 
+    font-size: 70px; 
+    line-height: 1.0; 
+    margin-top: 10px; 
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,0%);
+} 
+@keyframes leon-color {
+    0% {fill: #10aaaa;}
+    10% {fill: #10aa77;}
+    20% {fill: #10aa10;}
+    30% {fill: #aaaa10;} 
+    40% {fill: #aa7710;}
+    50% {fill: #aa1010;}
+    60% {fill: #aa1077;}
+    70% {fill: #aa10aa;}
+    80% {fill: #7710aa;}
+    90% {fill: #1010aa;}
+    100% {fill: #10aaaa;}
+}
+@-webkit-keyframes leon-color {
+    0% {fill: #10aaaa;}
+    10% {fill: #10aa77;}
+    20% {fill: #10aa10;}
+    30% {fill: #aaaa10;} 
+    40% {fill: #aa7710;}
+    50% {fill: #aa1010;}
+    60% {fill: #aa1077;}
+    70% {fill: #aa10aa;}
+    80% {fill: #7710aa;}
+    90% {fill: #1010aa;}
+    100% {fill: #10aaaa;}
+}
+@keyframes leon-scale {
+    0% {transform: scale(100%);}
+    50% {transform: scale(150%);}
+    100% {transform: scale(100%);}
+}
+@-webkit-keyframes leon-scale {
+    0% {transform: scale(100%);}
+    50% {transform: scale(150%);}
+    100% {transform: scale(100%);}
+}
+
+/* end preloader */
+
+/* toolbar */
+
+#toolbar {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    background-color: var(--main-bg-color);
+    display: none;
+}
+#tool-container {
+    height: 40px;
+    max-width: 380px;
+    margin: auto;
+    padding: 4px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.icon-link {
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 16px;
+    line-height: 1.0;
+    margin: auto;
+    vertical-align: middle;
+    cursor: pointer;
+    width: 80%;
+    text-align: center;
+}
+.icon-link:hover {background-color: var(--items-hover-color) !important;}
+
+
+
+
+
+
+
+/* media */ 
+
+@media screen and (min-width:850px) {
+    #menu-btn {display: none;}
+}
+@media screen and (max-width: 750px) {
+    .hide1 {display: none;}
+}
+@media screen and (max-width: 650px) {
+    .hide2 {display: none;}
+    #toolbar {display: block;}
+}
+@media screen and (max-width: 500px) {
+    .hide3 {display: none;}
+}
+@media screen and (max-width: 400px) {
+    #navigation-top, #nav-cont, #linkbox, #nav-bg, #nav-ph {height: 40px;}
+    #logo {height: 30px; margin: 5px;}
+    #theme-btn {display: none;}
+    .bars.menulink {margin: 0px; border-radius: 0px;}
+}
+
+/* media */ 

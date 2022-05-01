@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="materials/fontawesome/css/all.css">
+	<link rel="stylesheet" href="css/base.css">
+	<title>404</title>
+	<style type="text/css">
+		html, body { overflow: hidden; }
+		.errorbox {
+			position: fixed; 
+			top: 50%; 
+			left: 50%;
+			transform: translate(-50%,-50%);
+			width: 100%;
+			padding: 10px;
+			font-size: 200%;
+		}
+		.svglogo { max-width: 300px;}
+		.errorbox p, .errorbox h1 { 
+			font-family: 'Play', sans-serif;
+			line-height: 1.0; 
+			margin: 10px 0px; 
+			text-align: center;
+		}
+		.errorbox #theme-btn {
+			display: inline-block;
+		}
+		#links {
+			position: relative;
+			display: inline-block;
+			vertical-align: middle;
+			left: 50%; 
+			transform: translate(-50%,0%);
+		}
+		.errorbox .menulink {font-size: 0.8em;}
+	</style>
+</head>
+<body class="auto">
+	<div class="errorbox">
+		<h1>404 <i class="fa-regular fa-file-code"></i></h1>
+		<p>тут такого немає((</p>
+		<div id="links">
+			<a href="index" class="menulink">Головна</a>
+			<i id="theme-btn"></i>
+		</div>
+	</div>
+	<script src="js/code.js"></script>
+</body>
+</html>

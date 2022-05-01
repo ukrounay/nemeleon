@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@100;200;300;400;500;600;700;800&family=Anonymous+Pro:wght@400;700&family=Didact+Gothic&family=Jura:wght@300;400;500;600;700&family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&family=Orelega+One&family=Play:wght@400;700&family=Rubik+Mono+One&family=Russo+One&family=Tenor+Sans&family=Yeseva+One&display=swap');
+/* 
+font-family: 'Alumni Sans', sans-serif;
+font-family: 'Anonymous Pro', monospace;
+font-family: 'Didact Gothic', sans-serif;
+font-family: 'Jura', sans-serif;
+font-family: 'Montserrat Alternates', sans-serif;
+font-family: 'Orelega One', cursive;
+font-family: 'Play', sans-serif;
+font-family: 'Rubik Mono One', sans-serif;
+font-family: 'Russo One', sans-serif;
+font-family: 'Tenor Sans', sans-serif;
+*/
+body {font-family: 'Play', sans-serif;}
+body.f1 {font-family: 'Play', sans-serif;}
+body.f2 {font-family: 'Play', sans-serif;}
+body.f3 {font-family: 'Play', sans-serif;}
+body.f4 {font-family: 'Play', sans-serif;}
+body.f5 {font-family: 'Play', sans-serif;}
+body.f6 {font-family: 'Play', sans-serif;}
+body.f7 {font-family: 'Play', sans-serif;}
+body.f8 {font-family: 'Play', sans-serif;}
+#navigation-top a{font-family: 'Montserrat Alternates', sans-serif;}
+#article-title{font-family: 'Russo One', sans-serif; font-weight: normal;}
+#text h2{font-family: 'Montserrat Alternates', sans-serif;}

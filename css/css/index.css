@@ -1,0 +1,5 @@
+/* mask-image: url(masks.svg#mask1); */
+#index-logo {
+    background-image: url(img/image.jpg);
+    mask-image: url(../materials/logo.svg);
+}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body, html {padding: 0px; margin: 0px;}
+        body {overflow: hidden; background-color: black;}
+        section {position: fixed; width: 100%; height: 100%;}
+        .container {position: absolute; width: 100%; overflow: hidden; transition: 0.5s;}
+        .text-container {position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); color: white; text-align: center;}
+        .text-container h1{font-size: 8vw; line-height: 1.0; margin: 20px 0px; font-family: Arial, Helvetica, sans-serif;}
+        .text-container p{font-size: 5vw; line-height: 1.0; margin: 20px 0px; font-family: Arial, Helvetica, sans-serif;}
+        .c1 {top: 0%; height: 100%; background-color: rgb(218, 163, 163);}
+        .c2 {top: 100%; height: 0%; background-color: lightseagreen;}
+        .c3 {top: 100%; height: 0%; background-color: darkred;}
+        .c4 {top: 100%; height: 0%; background-color: darkgreen;}
+        .c5 {top: 100%; height: 0%; background-color: blueviolet;}
+        .container.scrolled {top: 0% !important; height: 0% !important;}
+        #side-dot-nav {position: fixed; right: 0px; top: 0px; width: 50px; height: 100%; z-index: 10;}
+        #dot-arrow-container {position: absolute; width: 100%; height: 300px; top: 50%; transform: translate(0%, -50%);}
+        .arrow-container {height: 50px; width: 100%;}
+        .arrow {border-top: 10px solid aliceblue; border-left: 10px solid aliceblue; height: 15px; width: 15px; margin: auto; cursor: pointer;}
+        #up-arrow-container .arrow {transform: rotate(45deg) translate(25%,25%);}
+        #down-arrow-container .arrow {transform: rotate(225deg) translate(-25%,-25%);}
+        .line {position: absolute; width: 3px; height: 180px; top: 50%; left: 50%; background-color: aliceblue; transform: translate(-50%, -50%);}
+        .dot { position: relative; width: 20px; height: 20px; margin: 20px 0px; border-radius: 100%; left: 50%; background-color: aliceblue; transition: 0.5s; transform: translate(-50%, 0%); cursor: pointer;}
+        .dot.active {height: 40px; width: 40px;}
+        #dot1 {margin-top: 0px;}
+        #dot5 {margin-bottom: 0px;}
+    </style>
+</head>
+<body>
+    <section>
+        <div id="side-dot-nav">
+            <div id="dot-arrow-container">
+                <div class="arrow-container" id="up-arrow-container">
+                    <div class="arrow"></div>
+                </div>
+                <div id="dot-container">
+                    <div class="line"></div>
+                    <div class="dot" id="dot1"></div>
+                    <div class="dot" id="dot2"></div>
+                    <div class="dot" id="dot3"></div>
+                    <div class="dot" id="dot4"></div>
+                    <div class="dot" id="dot5"></div>
+                </div>
+                <div class="arrow-container" id="down-arrow-container">
+                    <div class="arrow"></div>
+                </div>
+            </div>
+        </div>
+        <div class="container c1">
+            <div class="text-container">
+                <h1>Картинка 1</h1>
+                <p>Підпис першої картинки</p>
+            </div>
+        </div>
+        <div class="container c2">
+            <div class="text-container">
+                <h1>Картинка 2</h1>
+                <p>Підпис другої картинки</p>
+            </div>
+        </div>
+        <div class="container c3">
+            <div class="text-container">
+                <h1>Картинка 3</h1>
+                <p>Підпис третьої картинки</p>
+            </div>
+        </div>
+        <div class="container c4">
+            <div class="text-container">
+                <h1>Картинка 4</h1>
+                <p>Підпис четвертої картинки</p>
+            </div>
+        </div>
+        <div class="container c5">
+            <div class="text-container">
+                <h1>Картинка 5</h1>
+                <p>Підпис п'ятої картинки</p>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript">
+        var isScrollLocked = false;
+        var slideNumber = 0;
+        document.getElementById("dot1").classList.add("active");
+        var slide = document.getElementsByClassName("container");
+        var dot = document.getElementsByClassName("dot");
+        function scrollUnlock(time) {
+            setTimeout(() => {
+                isScrollLocked = false;
+            }, time);
+        }
+        function makeScrolled(slidenumb) {slide[slidenumb].classList.add("scrolled");}
+        function unScrolled(slidenumb) {slide[slidenumb].classList.remove("scrolled");}
+        function slideScrollDown() {
+            if (slideNumber < 4) {
+                makeScrolled(slideNumber);
+                dot[slideNumber].classList.remove("active");
+                slideNumber++;
+                unScrolled(slideNumber);
+                slide[slideNumber].style.top = "0%";
+                slide[slideNumber].style.height = "100%";
+                dot[slideNumber].classList.add("active");
+                
+            }
+        }
+        function slideScrollUp() {
+            if (slideNumber > 0) {
+                slide[slideNumber].style.top = "100%";
+                slide[slideNumber].style.height = "0%";
+                dot[slideNumber].classList.remove("active");
+                slideNumber--;
+                unScrolled(slideNumber);
+                slide[slideNumber].style.top = "0%";
+                slide[slideNumber].style.height = "100%";
+                dot[slideNumber].classList.add("active");
+            }
+        }
+        function slideScrollTo(toslide) {
+            if (isScrollLocked == false) {
+                isScrollLocked = true;
+                dot[slideNumber].classList.remove("active");
+                if (slideNumber < toslide) {
+                    for (let i = slideNumber; i < toslide; i++) {makeScrolled(i);}
+                    slide[toslide].style.top = "0%";
+                    slide[toslide].style.height = "100%";
+                } else {
+                    for (let i = toslide; i < slideNumber; i++) {
+                        unScrolled(i);
+                        slide[i].style.top = "100%";
+                        slide[i].style.height = "0%";
+                    }
+                    slide[slideNumber].style.top = "100%";
+                    slide[slideNumber].style.height = "0%";
+                    slide[toslide].style.top = "0%";
+                    slide[toslide].style.height = "100%";
+                }
+                slideNumber = toslide;
+                dot[slideNumber].classList.add("active");
+                scrollUnlock(500);
+            }
+        }
+        $(function(){    
+            $('body').on('mousewheel', function(e){
+                if (isScrollLocked == false) {
+                    isScrollLocked = true;
+                    if( e.originalEvent.wheelDelta >= 0 ) {slideScrollUp();
+                    }else if( e.originalEvent.wheelDelta <= 0 ){slideScrollDown();}
+                    if( slideNumber > (slide.length - 1) || slideNumber < 0 ) {slideNumber = 1;}
+                    scrollUnlock(500);
+                }
+            });    
+        });
+        $('#dot1').on('click', function(){slideScrollTo("0")});
+        $('#dot2').on('click', function(){slideScrollTo("1")});
+        $('#dot3').on('click', function(){slideScrollTo("2")});
+        $('#dot4').on('click', function(){slideScrollTo("3")});
+        $('#dot5').on('click', function(){slideScrollTo("4")});
+        $('#up-arrow-container').on('click', function(){
+            if (isScrollLocked == false) {
+                isScrollLocked = true;
+                slideScrollUp()
+                scrollUnlock(500);
+            }
+        });
+        $('#down-arrow-container').on('click', function(){
+            if (isScrollLocked == false) {
+                isScrollLocked = true;
+                slideScrollDown()
+                scrollUnlock(500);
+            }
+        });
+    </script>
+</body>
+</html>
