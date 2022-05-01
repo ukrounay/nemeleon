@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="ua">
 <head>
-    <?php $linkset = $_GET['articleid']; ?>
+    <?php 
+    $linkset = $_GET['articleid']; 
+    
+    ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo "some article";?> • Nemeleon</title>
@@ -23,7 +26,7 @@
         
         <div id="text">
             <div id="breadcrumps">
-                <p><a href="index.php">Головна</a> / <a href="index.html">Статті</a> / <a href=""><?php echo "some article";?></a></p>
+                <p><a href="index.php">Головна</a> / <a href="index.html">Статті</a> / <a href="/"><?php echo "some article";?></a></p>
             </div>
 
             <ul id="inner-contentnav">
