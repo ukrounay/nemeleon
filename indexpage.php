@@ -40,26 +40,17 @@
 
 
 
-    <section>
-        <a href="article?articleid=0">article 1</a>
+    <section id="intro">
+        <a href="article?articleid=last">article 1</a>
     </section>
 
-    <section>
+    <section id="join">
         <a href="article?articleid=1">article 2</a>
     </section>
 
-    <section>
+    <section id="about">
         <a href="article?articleid=2">article 3</a>
     </section>
-
-    <div id="toolbar" class="shadow-top">
-        <div id="tool-container">
-            <i class="fa-solid fa-house icon-link"></i>
-            <i class="fa-solid fa-hashtag icon-link"></i>
-            <i class="fa-solid fa-share-nodes icon-link"></i>
-            <i class="fa-solid fa-user icon-link"></i>
-        </div>
-    </div>
 
 </div>
 

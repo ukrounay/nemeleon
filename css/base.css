@@ -100,7 +100,6 @@ html *::-webkit-scrollbar {
 body, html {padding: 0px; margin: 0px; scrollbar-width: none;}
 html { scroll-behavior: smooth;}
 a {text-decoration: none;}
-section {height: 500px; width: 100%;}
 ::-moz-selection {background-color: var(--accent); color: var(--main-bg-color);}
 ::selection {background-color: var(--accent); color: var(--main-bg-color);}
 
@@ -203,7 +202,7 @@ i {color: var(--accent) !important; background-color: transparent !important;}
     left: 0px; 
     height: 100%; 
     width: 100%; 
-    backdrop-filter: blur(4px);
+    background-color: var(--main-bg-color);
     z-index: 1000;
     transition: 0.7s;
 }
@@ -298,10 +297,33 @@ i {color: var(--accent) !important; background-color: transparent !important;}
 }
 .icon-link:hover {background-color: var(--items-hover-color) !important;}
 
+/* end toolbar */
+
+
+/* section.intro */
+
+#intro {
+    height: 540px;
+    width: 100%;
+    background-color: #202020;
+    color: #f1f1f1 !important;
+}
+
+/* end section.intro */
+
+
+/* section.join */
 
 
 
+/* end section.join */
 
+
+/* section.about */
+
+
+
+/* end section.about */
 
 
 /* media */ 
