@@ -1,6 +1,21 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><!--?php echo $title; ?--></title>
+<link rel="stylesheet" type="text/css" href="css/base.css">
+<link rel="stylesheet" href="materials/fontawesome/css/all.css">
+<meta property="og:locale" content="ua_UA" />
+<!-- <script src="https://kit.fontawesome.com/607590d81b.js" crossorigin="anonymous"></script> -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+<script src="libs/jquerylib.js"></script>
+<meta name="theme-color" content="#202020">
+
+
 <?php 
 $title="Увійти"; 
-require "head.php"; 
 require "libs/db.php"; 
 $data = $_POST;
 if(isset($data['do_login'])) { 
@@ -13,7 +28,7 @@ if(isset($data['do_login'])) {
 
  		$_SESSION['logged_user'] = $user;
  		
-                header('Location: index.php');
+                header('Location: index');
 
  	} else {
     
@@ -31,6 +46,9 @@ if(!empty($errors)) {
 	}
 }
 ?>
+
+</head>
+<body class="auto">
 <div class="logbox">
 	<h2>Вхід на сайт</h2>
 		<form action="login.php" method="post">

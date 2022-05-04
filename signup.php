@@ -1,9 +1,23 @@
-<?php 
-$title="Форма регистрації"; 
-require __DIR__ . '\parts\header.php'; 
-require "db.php"; 
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo $title; ?></title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" href="materials/fontawesome/css/all.css">
+    <meta property="og:locale" content="ua_UA" />
+    <!-- <script src="https://kit.fontawesome.com/607590d81b.js" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+    <script src="libs/jquerylib.js"></script>
+    <meta name="theme-color" content="#202020">
+</head>
+<body class="auto">
 
-$data = $_POST;
+<?php 
+	$title="Форма регистрації"; 
+	require __DIR__ . '\libs\db.php'; 
+	$data = $_POST;
 
 if(isset($data['do_signup'])) {
 
