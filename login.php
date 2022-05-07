@@ -51,7 +51,7 @@ if(!empty($errors)) {
 <body class="auto">
 <div class="logbox">
 	<h2>Вхід на сайт</h2>
-		<form action="login.php" method="post">
+		<form action="login" method="post">
 			<input type="text" class="form-control" name="login" id="login" placeholder="Логін" required><br>
 			<input type="password" class="form-control" name="password" id="pass" placeholder="Пароль" required><br>
 			<button class="btn btn-success" name="do_login" type="submit">Авторизуватися</button>

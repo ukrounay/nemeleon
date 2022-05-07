@@ -1,0 +1,29 @@
+* {transition: 0.1s; box-sizing: border-box;}
+body, html {padding: 0px; margin: 0px;}
+nav {
+    background-color: var(--main-bg-color);
+    position: sticky;
+    top: 0px;
+}
+header {max-width: 900px; margin: auto;}
+#logo {
+    position: relative;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+#article-image {
+    height: 200px;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 26px;
+}
+@media screen and (max-width: 900px) {
+    #article-image {border-radius: 0px;}
+}
+#article-title{
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+}
