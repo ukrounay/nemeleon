@@ -24,8 +24,9 @@ try {
     <title><?php $header = $article['header']; echo $header; ?> • Nemeleon</title>
     <link rel="stylesheet" type="text/css" href="css/base.css">
     <link rel="stylesheet" href="css/article.css">
+    <link rel="stylesheet" href="materials/fontawesome/css/all.css">
     <!-- <meta property="og:locale" content="ua_UA" /> -->
-    <script src="https://kit.fontawesome.com/607590d81b.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/607590d81b.js" crossorigin="anonymous"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body class="auto">
