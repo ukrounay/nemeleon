@@ -27,7 +27,7 @@
                 <a class="menulink" onclick="setTheme('light')">Світла</a>
                 <a class="menulink" onclick="setTheme('dark')">Темна</a>
             </div> -->
-            <i id="log-btn" onclick="location.href = 'signup'" class="fa-solid fa-user menulink"></i>
+            <i id="log-btn" onclick="location.href = 'user'" class="fa-solid fa-user menulink hide3"></i>
 
             <div id="menu-btn">
                 <div class="bars menulink">
@@ -37,7 +37,7 @@
             </div>
         </div>
 
-</nav>
+    </nav>
 
 
 

@@ -127,7 +127,7 @@ if(isset($data['do_signup'])) {
 
 <div class="logbox">
 		<h2>Форма регістрації</h2>
-		<form action="signup.php" method="post">				
+		<form action="signup" method="post">				
 			<input type="text" class="form-control" name="login" id="login" placeholder="логін"><br>
 			<input type="email" class="form-control" name="email" id="email" placeholder="e-mail"><br>
 			<input type="text" class="form-control" name="name" id="name" placeholder="ім'я" required><br>
