@@ -33,15 +33,15 @@
         max-width: 600px; 
         min-width: 600px; 
         min-height: 40px; 
-        border-radius: 20px 20px 0px 20px !important; 
+        border-radius: 8px 8px 0px 8px !important; 
         font-family: sans-serif; 
         transition: 0s;
     }
     .form-control {
-        border-radius: 20px; 
-        border: 1px solid #202020; 
-        padding:10px; 
-        height:40px;
+        border-radius: 8px; 
+        border: 2px solid #dddddd; 
+        padding: 10px; 
+        height: 40px;
     }
     select {margin-bottom: 10px; padding: 10px; line-height: 1.0;}
     button {
@@ -49,21 +49,21 @@
         padding: 10px; 
         line-height: 1.0; 
         height: 40px; 
-        border-radius: 20px; 
+        border-radius: 8px; 
         background-color: white; 
         color: #202020; 
-        border: 1px solid #202020; 
+        border: 2px solid #dddddd; 
         font-weight: bold;
     }
-    button:hover {background-color: #202020; color: #f4f4f4;}
+    button:hover {border: 5px solid #10aaaa; padding: 7px;}
     .quote {
         display: grid;
         grid-template-columns: 1fr 20px; 
         padding: 20px; 
         margin: 10px 0px; 
-        border-radius: 20px;
+        border-radius: 8px;
     }
-    .quote.good {background-color: #00ff9d98; }
+    .quote.good {background-color: #10aaaa50; }
     .quote p {line-height: 1.0; margin: 0px;}
 </style>
 <meta name="theme-color" content="#202020">

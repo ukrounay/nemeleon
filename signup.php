@@ -15,37 +15,37 @@
     .logbox {max-width: 400px; margin: auto; padding: 20px;}
     h2, input {display: block; width:100%;}
     .form-control {
-        border-radius: 20px; 
-        border: 1px solid #202020; 
-        padding:10px; 
-        height:40px;
+        border-radius: 8px; 
+        border: 2px solid #dddddd; 
+        padding: 10px; 
+        height: 40px;
     }
     button {
         margin: 10px 5px 10px 0px; 
         padding: 10px; 
         line-height: 1.0; 
         height: 40px; 
-        border-radius: 20px; 
+        border-radius: 8px; 
         background-color: white; 
         color: #202020; 
-        border: 1px solid #202020; 
+        border: 2px solid #dddddd; 
         font-weight: bold;
     }
-    button:hover {background-color: #202020; color: #f4f4f4;}
+    button:hover {border: 5px solid #10aaaa; padding: 7px;}
     .quote {
         display: grid;
         grid-template-columns: 1fr 20px; 
         padding: 20px; 
         margin: 10px 0px; 
-        border-radius: 20px;
+        border-radius: 8px;
     }
-    .quote.good {background-color: #00ff9d98; }
+    .quote.good {background-color: #10aaaa50; }
 	.quote.bad {background-color: #ff646498; }
     .quote p {line-height: 1.0; margin: 0px;}
 </style>
 <meta name="theme-color" content="#202020">
 </head>
-<body class="auto">
+<body>
 <div class="logbox">
 		<h2>Регістрація</h2>
 		<form action="signup" method="post">				
@@ -55,9 +55,9 @@
 			<input type="text" class="form-control" name="family" id="family" placeholder="прізвище" required><br>
 			<input type="password" class="form-control" name="password" id="password" placeholder="пароль"><br>
 			<input type="password" class="form-control" name="password_2" id="password_2" placeholder="повторіть пароль"><br>
-			<button class="btn btn-success" name="do_signup" type="submit">Зареєструватись</button>
-			<button onclick="location.href='login'">Увійти</button>
-			<button onclick="location.href='index'">Головна</button>
+			<button class="btn btn-success" name="do_signup" type="submit">Зареєструватись</button><br>
+			<button onclick="go('signup')">Зареєструватись</button>
+			<button onclick="go('index')">Головна</button>
 		</form>
 
 <?php 
@@ -170,6 +170,16 @@ if(isset($data['do_signup'])) {
 	}
 }
 ?>
-	</div>
+</div>
+<script>
+    function go(loc) {
+        inputs = document.querySelectorAll('input');
+        for (let i = 0; i < inputs.length; i++) {
+            let elem = inputs[i];
+            elem.value = '';
+        }
+        location.href = loc;
+    }
+</script>
 </body>
 </html>
