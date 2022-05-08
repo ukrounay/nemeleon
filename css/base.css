@@ -91,11 +91,12 @@ body {font-family: 'Play', sans-serif;}
 /* all */
 
 * {transition: 0.1s; box-sizing: content-box;}
-html *::-webkit-scrollbar { 
-    width: 0;
-    height: 0;
-} 
 body, html {padding: 0px; margin: 0px; scrollbar-width: none;}
+html::-webkit-scrollbar {width: 0px; height: 0px;}
+body *::-webkit-scrollbar {width: 10px; height: 10px;}
+body *::-webkit-scrollbar-track {background: transparent; margin-top: 10px; margin-bottom: 10px;}
+body *::-webkit-scrollbar-thumb {background: var(--main-color); border-radius: 5px;}
+body *::-webkit-scrollbar-thumb:hover {background: var(--accent);}
 html { scroll-behavior: smooth;}
 a {text-decoration: none;}
 ::-moz-selection {background-color: var(--accent); color: var(--main-bg-color);}

@@ -117,14 +117,14 @@ try {
         foreach ($slide_urls_and_types as &$value) {
             $value = explode(";", $value);
             if ($value[1]=="img") {
-                echo '<img class="article-page" src="'.$value[0].'" alt="'.$header.'">';
+                echo '<div class="article-page"><img src="'.$value[0].'" alt="'.$header.'"></div>';
             }
             if ($value[1]=="wiki") {
                 include('libs/simple_html_dom.php');
                 $html = new simple_html_dom();
                 $html->load_file($value[0]);
                 $element = $html->find("#content"); 
-                echo '<div class="article-page"'.$element[0].'</div>';
+                echo '<div class="article-page text"'.$element[0].'</div>';
             }
         }
         unset($value);
