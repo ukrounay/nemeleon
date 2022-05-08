@@ -22,11 +22,7 @@
             <a class="menulink hide3" href="javascript:void(0);">Контакти</a>
 
             <i id="theme-btn" onclick="themeToggle('light')" class="fa-solid fa-circle-dot menulink"></i>
-            <!-- <div class="dropbox shadow">
-                <a class="menulink" onclick="setTheme('auto')">Авто</a>
-                <a class="menulink" onclick="setTheme('light')">Світла</a>
-                <a class="menulink" onclick="setTheme('dark')">Темна</a>
-            </div> -->
+
             <i id="log-btn" onclick="location.href = 'user'" class="fa-solid fa-user menulink hide3"></i>
 
             <div id="menu-btn">
@@ -42,17 +38,30 @@
 
 
     <section id="intro">
-        <a href="article?articleid=last">article 1</a>
+        <div id="introtext">
+            <h1>Читай цікаве щодня</h1>
+            <p>Унікальні підбірки інформації з різних джерел - статті, фото, пости та дописи, зібрані разом та об'єднані спільною темою<br>
+                <a class="button" href="article?articleid=last">Остання підбірка</a>
+            </p>
+        </div>
+        <div id="introimg">
+            <img src="css/img/mask-02.svg"></img>
+        </div>
     </section>
 
     <section id="join">
-        <a href="article?articleid=1">article 2</a>
+        <div style="width: 100%; height: 100%; position: relative; z-index: 0; background-color: black; opacity: 0.6;"></div>
+        <h1>Приєднуйтесь до нашої спільноти</h1>
+        <p>Дізнавайтесь про новини сайту з багатьох інших джерел</p>
     </section>
 
     <section id="about">
         <a href="article?articleid=2">article 3</a>
     </section>
 
+    <footer>
+        <p>Розроблено в Україні для всіх. rnemaoh & nevinoveh, 2022</p>
+    </footer>
 </div>
 
 <script src="js/code.js"></script>

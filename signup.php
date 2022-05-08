@@ -6,13 +6,59 @@
     <title><?php echo $title; ?></title>
     <link rel="stylesheet" type="text/css" href="css/base.css">
     <link rel="stylesheet" href="materials/fontawesome/css/all.css">
-    <meta property="og:locale" content="ua_UA" />
+    <!-- <meta property="og:locale" content="ua_UA" /> -->
     <!-- <script src="https://kit.fontawesome.com/607590d81b.js" crossorigin="anonymous"></script> -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
     <script src="libs/jquerylib.js"></script>
-    <meta name="theme-color" content="#202020">
+    <style>
+    * {box-sizing: border-box;}
+    .logbox {max-width: 400px; margin: auto; padding: 20px;}
+    h2, input {display: block; width:100%;}
+    .form-control {
+        border-radius: 20px; 
+        border: 1px solid #202020; 
+        padding:10px; 
+        height:40px;
+    }
+    button {
+        margin: 10px 5px 10px 0px; 
+        padding: 10px; 
+        line-height: 1.0; 
+        height: 40px; 
+        border-radius: 20px; 
+        background-color: white; 
+        color: #202020; 
+        border: 1px solid #202020; 
+        font-weight: bold;
+    }
+    button:hover {background-color: #202020; color: #f4f4f4;}
+    .quote {
+        display: grid;
+        grid-template-columns: 1fr 20px; 
+        padding: 20px; 
+        margin: 10px 0px; 
+        border-radius: 20px;
+    }
+    .quote.good {background-color: #00ff9d98; }
+	.quote.bad {background-color: #ff646498; }
+    .quote p {line-height: 1.0; margin: 0px;}
+</style>
+<meta name="theme-color" content="#202020">
 </head>
 <body class="auto">
+<div class="logbox">
+		<h2>Регістрація</h2>
+		<form action="signup" method="post">				
+			<input type="text" class="form-control" name="login" id="login" placeholder="логін"><br>
+			<input type="email" class="form-control" name="email" id="email" placeholder="e-mail"><br>
+			<input type="text" class="form-control" name="name" id="name" placeholder="ім'я" required><br>
+			<input type="text" class="form-control" name="family" id="family" placeholder="прізвище" required><br>
+			<input type="password" class="form-control" name="password" id="password" placeholder="пароль"><br>
+			<input type="password" class="form-control" name="password_2" id="password_2" placeholder="повторіть пароль"><br>
+			<button class="btn btn-success" name="do_signup" type="submit">Зареєструватись</button>
+			<button onclick="location.href='login'">Увійти</button>
+			<button onclick="location.href='index'">Головна</button>
+		</form>
 
 <?php 
 	$title="Форма регистрації"; 
@@ -116,29 +162,14 @@ if(isset($data['do_signup'])) {
 
 		// Сохраняем таблицу
 		R::store($user);
-        echo '<div style="color: green; ">Вы успешно зарегистрированы! Можно <a href="login.php">авторизоваться</a>.</div><hr>';
+        echo '<div  class="quote bad"><p>Акаунт зареєстрований. <a href="login">Перейти до авторизації</a>.<p></div>';
 
 	} else {
                 // array_shift() извлекает первое значение массива array и возвращает его, сокращая размер array на один элемент. 
-		echo '<div style="color: red; ">' . array_shift($errors). '</div><hr>';
+		echo '<div class="quote bad"><p>' . array_shift($errors) . '<p></div>';
 	}
 }
 ?>
-
-<div class="logbox">
-		<h2>Форма регістрації</h2>
-		<form action="signup" method="post">				
-			<input type="text" class="form-control" name="login" id="login" placeholder="логін"><br>
-			<input type="email" class="form-control" name="email" id="email" placeholder="e-mail"><br>
-			<input type="text" class="form-control" name="name" id="name" placeholder="ім'я" required><br>
-			<input type="text" class="form-control" name="family" id="family" placeholder="прізвище" required><br>
-			<input type="password" class="form-control" name="password" id="password" placeholder="пароль"><br>
-			<input type="password" class="form-control" name="password_2" id="password_2" placeholder="повторіть пароль"><br>
-			<button class="btn btn-success" name="do_signup" type="submit">Зареєструватись</button>
-		</form>
-		<br>
-		<p><a href="login.php">Увійти</a></p>
-		<p>Повернутися на <a href="index.php">головну</a></p>
 	</div>
 </body>
 </html>

@@ -72,12 +72,20 @@ try {
 </div>
 
 </nav>
+<div id="breadcrumps">
+    <p>
+        <a href="index">Головна</a> 
+        <i class="fa-solid fa-angles-right"></i> 
+        <?php $theme = $article['theme']; echo '<a href="search?theme='.$theme.'"'.$theme.'>'.$theme.'</a>';?> 
+        <i class="fa-solid fa-angles-right"></i> 
+        <?php echo $header; ?>
+    </p>
+</div>
 <header>
     <div id="article-image" style="background-image:url(<?php echo $article['indeximg']; ?>);"></div>
+    
     <h1 id="article-title"><?php echo $header;?></h1>
-    <div id="breadcrumps">
-        <p><a href="index">Головна</a> / <?php $theme = $article['theme']; echo '<a href="search?theme='.$theme.'"'.$theme.'>'.$theme.'</a>';?> / <a href="/"><?php echo "some article";?></a></p>
-    </div>
+
     <div id="tags">
         <?php
         $tags = explode(";", $article['tags']);
