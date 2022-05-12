@@ -72,7 +72,7 @@ try {
 
 
         <?php if(isset($_SESSION['logged_user'])) : ?>
-        <?php echo '<i id="log-btn" onclick="location.href = \'user\'" class="user-icon"></i>'; ?>
+        <?php echo '<i id="log-btn" onclick="location.href = \'user\'" class="fa-solid fa-user hide3"></i>'; ?>
         <?php else : ?>
         <?php echo '<i id="log-btn" onclick="location.href = \'login\'" class="fa-solid fa-user hide3"></i>'; ?>
         <?php endif; ?>
@@ -88,30 +88,27 @@ try {
 </nav>
 
 <header>
-    <div id="breadcrumps">
-        <p>
-            <a href="index">Головна</a> 
-            <i class="fa-solid fa-angles-right"></i> 
-            <?php $theme = $article['theme']; echo '<a href="search?theme='.$theme.'"'.$theme.'>'.$theme.'</a>';?> 
-            <i class="fa-solid fa-angles-right"></i> 
-        </p>
-    </div>
-    
-    
-    <h1 id="article-title"><?php echo $header;?></h1>
-
-    <div id="tags">
-        <?php
-        $tags = explode(";", $article['tags']);
-        foreach ($tags as &$tag) {
-            echo '<a class="tag" href="search?tag='.$tag.'">'.$tag.'</a>';
-        }
-        unset($tag);
-        ?>
-    </div><br>
-
     <div id="article-image" style="background-image:url(<?php echo $article['indeximg']; ?>);"></div>
-
+    <div id="article-header">
+        <div id="breadcrumps">
+            <p>
+                <a href="index">Головна</a> 
+                <i class="fa-solid fa-angles-right"></i> 
+                <?php $theme = $article['theme']; echo '<a href="search?theme='.$theme.'"'.$theme.'>'.$theme.'</a>';?> 
+                <i class="fa-solid fa-angles-right"></i> 
+            </p>
+        </div>
+        <h1 id="article-title"><?php echo $header;?></h1>
+        <div id="tags">
+            <?php
+            $tags = explode(";", $article['tags']);
+            foreach ($tags as &$tag) {
+                echo '<a class="tag" href="search?tag='.$tag.'">'.$tag.'</a>';
+            }
+            unset($tag);
+            ?>
+        </div>
+    </div>
 </header>
 <div id="controls">
     <i class="fa-solid fa-angle-left"></i>

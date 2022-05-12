@@ -386,16 +386,16 @@ a {text-decoration: none;}
     #introtext h1 {font-size: 300%;}
     #introtext p {font-size: 120%;}
 }
-@media screen and (min-width: 750px) and (max-width: 900px) {
+@media screen and (min-width: 700px) and (max-width: 900px) {
     #introtext h1 {font-size: 240%;}
-    #introtext p {font-size: 120%;}
+    #introtext p {font-size: 110%;}
 }
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 700px) {
     #intro-content{display: block;}
-    #introtext h1 {font-size: 180%;}
-    #introtext p {font-size: 120%;}
+    #introtext h1 {font-size: 200%;}
+    #introtext p {font-size: 100%;}
 }
-@media screen and (max-width: 750px) and (min-width: 400px) {
+@media screen and (max-width: 700px) and (min-width: 400px) {
     #introimg img {width: 60%; position: relative; left: 50%; transform: translate(-50%,0%);}
     
 }

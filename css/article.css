@@ -1,22 +1,24 @@
 * {transition: 0.1s; box-sizing: border-box; text-decoration-color: var(--accent) !important;}
 body, html {padding: 0px; margin: 0px;}
-header {max-width: 1000px; margin: auto; padding: 20px;}
-article {padding: 20px;}
+header {max-width: 1000px; margin: auto;}
 #article-image {
     height: 400px;
     width: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    border-radius: 26px;
+    border-radius: 20px;
 }
-@media screen and (max-width: 1200px) {
-    #article-image {height: 300px;}
+#article-header {
+    padding: 10px 20px 20px;
 }
 @media screen and (max-width: 1000px) {
-    #article-image {border-radius: 10px; height: 250px;}
+    #article-image {height: 300px; border-radius: 0px;}
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
+    #article-image {height: 250px;}
+}
+@media screen and (max-width: 500px) {
     #article-image {height: 200px;}
 }
 
