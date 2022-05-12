@@ -27,7 +27,8 @@ try {
     <link rel="stylesheet" href="materials/fontawesome/css/all.css">
     <!-- <meta property="og:locale" content="ua_UA" /> -->
     <!-- <script src="https://kit.fontawesome.com/607590d81b.js" crossorigin="anonymous"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script> -->
+    <script src="js/code.js" defer></script>
 </head>
 <body class="auto">
 
@@ -113,23 +114,28 @@ try {
 </div>
 <article>
     <?php 
-        $slide_urls_and_types = explode("|", $article['urls']);
-        foreach ($slide_urls_and_types as &$value) {
-            $value = explode(";", $value);
+        $slide_urls_and_types = explode("|||", $article['urls']);
+        foreach ($slide_urls_and_types as &$slide) {
+            $value = explode("||", $slide);
+
             if ($value[1]=="img") {
-                echo '<div class="article-page"><img src="'.$value[0].'" alt="'.$header.'"></div>';
+                echo '<img class="article-page img" src="'.$value[0].'" alt="'.$header.'">';
             }
             if ($value[1]=="wiki") {
                 include('libs/simple_html_dom.php');
                 $html = new simple_html_dom();
                 $html->load_file($value[0]);
                 $element = $html->find("#content"); 
-                echo '<div class="article-page text"'.$element[0].'</div>';
+                echo '<div class="article-page text">'.$element[0].'</div>';
             }
+            if ($value[1]=="tweet") {
+                echo '<div class="article-page tweet">'.$value[0].'</div>';
+            }
+
         }
         unset($value);
     ?>
 </article>
-<script src="js/code.js"></script>
-<script stc="js/pages.js"></script>
+
+<!-- <script src="js/pages.js"></script> -->
 </body></html>

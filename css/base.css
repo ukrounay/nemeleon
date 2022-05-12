@@ -78,7 +78,7 @@ body {font-family: 'Play', sans-serif;}
 .light, .light * {
     --main-color: #202020;
     --main-bg-color: #fff;
-    --container-color: #ddd;
+    --container-color: #eee;
     --items-hover-color: #ddd;
     --border-color: #37373750;
 }
@@ -90,7 +90,7 @@ body {font-family: 'Play', sans-serif;}
 
 /* all */
 
-* {transition: 0.1s; box-sizing: content-box;}
+* {transition: 0.1s; box-sizing: border-box;}
 body, html {padding: 0px; margin: 0px; scrollbar-width: none;}
 html::-webkit-scrollbar {width: 0px; height: 0px;}
 body *::-webkit-scrollbar {width: 10px; height: 10px;}
@@ -188,7 +188,7 @@ a {text-decoration: none;}
     margin: 0px 4px;
 }
 
-i {color: var(--accent) !important; background-color: transparent !important;}
+#linkbox i, #controls i {color: var(--accent); background-color: transparent;}
 
 /* end nav */
 
