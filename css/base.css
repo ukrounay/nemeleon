@@ -1,11 +1,10 @@
 /* fonts */
 /* 
 
-це я робив офлайн шрифти, бо інет в селі ні разу не стабільний(
+offline fonts
 
-    тут можна підключити шрифти з гугл фонтс, якщо розкоментувати цей імпорт -->
+    google fonts import link -->
 @import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@100;200;300;400;500;600;700;800&family=Anonymous+Pro:wght@400;700&family=Didact+Gothic&family=Jura:wght@300;400;500;600;700&family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&family=Orelega+One&family=Play:wght@400;700&family=Rubik+Mono+One&family=Russo+One&family=Tenor+Sans&family=Yeseva+One&display=swap');
-    і закоментувати всі font-face знизу.
 
 font-family: 'Didact Gothic', sans-serif;
 font-family: 'Montserrat Alternates', sans-serif;
@@ -32,7 +31,7 @@ font-family: 'Russo One', sans-serif;
 body {font-family: 'Play', sans-serif;}
 #navigation-top a, #breadcrumps p {font-family: 'Montserrat Alternates', sans-serif;}
 #article-title{font-family: 'Russo One', sans-serif; font-weight: normal;}
-#text h2{font-family: 'Montserrat Alternates', sans-serif;}
+h1 {font-family: 'Montserrat Alternates', sans-serif;}
 
 /* end fonts */
 
@@ -40,11 +39,7 @@ body {font-family: 'Play', sans-serif;}
 
 /* var */
 
-/* 
-    змінні це просто прекрасно для реалізації кольорів на сайті)
-    я коли не знав про змінні, приходилось прописувати для кожного елемента по кілька режимів, це взагалі капець
-    (це я так зробив у портфоліо, і це дуууже нераціонально)
-*/
+/* variables are gorgeous (^_^) */
 
 :root {
     --accent: #10aaaa;
@@ -69,9 +64,9 @@ body {font-family: 'Play', sans-serif;}
 @media (prefers-color-scheme: light) { 
     .auto, .auto * {
         --main-color: #202020;
-        --main-bg-color: #f7f7f7;
-        --container-color: #fff;
-        --items-hover-color: #d7d7d7;
+        --main-bg-color: #fff;
+        --container-color: #eee;
+        --items-hover-color: #ddd;
         --border-color: #37373750;
     }
 }
@@ -118,26 +113,24 @@ a {text-decoration: none;}
     left: 0px;
     width: 100%;
     height: 60px;
-    z-index: 0;
+    z-index: 999;
     background-color: var(--main-bg-color);
 }
 .shadow {box-shadow: 0px 0px 2px var(--border-color);}
+.border {border: 1px solid var(--border-color);}
+.border-bottom {box-sizing: content-box !important; border-bottom: 1px solid var(--border-color);}
 #navigation-top {
     transition: 0.2s; 
     position: fixed; 
     top: 0px; 
-    left: 50%;
-    transform: translate(-50%,0%);
     width: 100%;
     height: 60px; 
-    z-index: 10;
-    max-width: 1200px;
+    z-index: 1000;
     display: grid;
-    grid-template-columns: 210px 1fr;
+    grid-template-columns: 210px 1fr auto auto;
+    padding: 0px;
 }
-@media screen and (min-width: 1000px) {
-    #navigation-top { width: 1000px; }    
-}
+
 #logo { transition: 0.4s; display: inline-block; height: 40px; margin: 10px; vertical-align: middle; cursor: pointer;}
 .nav-logo {fill: var(--main-color);}
 .nav-logo:first-child {fill: var(--accent);}
@@ -164,21 +157,20 @@ a {text-decoration: none;}
     right: 0px;
     background-color: var(--main-bg-color);    
     color: var(--main-color);
-    margin-top: 0px;
-    padding: 4px;
+    margin-top: -6px;
+    padding: 6px 0px;
     border-radius: 6px;
 }
-.dropbox a {display: block; text-align: center; margin: 0px;}
-
-
-
-#menu-btn { display: inline-block; vertical-align: top; margin: 0px 5px;}
+.dropbox a {display: block; text-align: left; margin: 0px; border-radius: 0px !important;}
+#menu-btn, #theme-btn, #log-btn {vertical-align: top; margin: 11px 2px; padding: 11px; border-radius: 6px; color: var(--accent);}
+#menu-btn {display: none;}
 .bars {
+    box-sizing: border-box;
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     gap: 4px;
-    margin: 11px 0px;
-    background-color: transparent !important;
+    margin: auto;
+    background-color: transparent;
 }
 .bar {
     background-color: var(--accent);
@@ -188,7 +180,7 @@ a {text-decoration: none;}
     margin: 0px 4px;
 }
 
-#linkbox i, #controls i {color: var(--accent); background-color: transparent;}
+#menu-btn:hover, #theme-btn:hover, #log-btn:hover {background-color: var(--items-hover-color);}
 
 /* end nav */
 
@@ -300,6 +292,52 @@ a {text-decoration: none;}
 
 
 
+/* searchbar */
+
+#nav {
+    height: 60px;
+    position: sticky;
+    top: 0px;
+    background-color: var(--main-bg-color);
+    display: grid;
+    grid-template-columns: 210px 1fr 60px;
+}
+@media screen and (max-width: 600px) {#nav { grid-template-columns: 0px 1fr 0px;}}
+#search-cont {
+    margin: 10px;
+    padding: 6px;
+    background-color: var(--container-color);
+    height: 40px;
+    /* border: 2px solid var(--border-color); */
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 1fr 30px;
+    border: 1px solid transparent;
+}
+
+#search-cont input {
+    box-sizing: border-box;
+    height: 26px;
+    padding: 3px 5px 5px;
+    margin: 0px;
+    font-family: 'Montserrat Alternates';
+    line-height: 1.0;
+    font-size: 16px;
+    border: none;
+    background-color: transparent;
+    color: inherit;
+}
+#search-cont input:focus-visible,  #search-btn:focus-visible{
+    outline: none;
+}
+#nav #theme-btn {background-color: transparent !important; color: var(--accent);}
+#search-btn {background-color: transparent !important; color: var(--main-color); opacity: 0.3; border: none;}
+#search-btn:hover {opacity: 1.0; color: var(--accent);}
+#results-box {width: 100%; overflow: auto;}
+
+/* end searchbar */
+
+
 
 /* all sections */
 .button {
@@ -312,48 +350,60 @@ a {text-decoration: none;}
     padding: 8px 10px 10px 10px;
     border: 2px solid var(--border-color);
     border-radius: 8px;
-    background-color: var(--main-bg-color);
-    color: var(--main-color);
+    color: inherit;
 }
 .button:hover {
     border: 5px solid var(--accent);
     padding: 5px 7px 7px 7px;
 }
+.button.dark-btn {border-color: var(--accent) !important;}
 
 
 
 /* section.intro */
 
 #intro {
-    max-width: 800px;
+    background-color: #202020;
+
+}
+#intro-content {
+    max-width: 1100px;
     margin: auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    padding: 20px;
+    -webkit-filter: brightness(90%); 
+    filter: brightness(90%);
 }
-#introimg img {width: 100%;}
-.dark #introimg img {-webkit-filter: brightness(70%); filter: brightness(70%);}
-#introtext {display: flex; flex-direction: column; justify-content: center;}
-#introtext h1 {margin: 0px 0px 20px 0px;}
+#introimg img {
+    width: 100%; 
+    padding: 20px;
+    max-height: 500px;
+}
+#introtext {display: flex; flex-direction: column; justify-content: center; line-height: 1.5; color: #f4f4f4; padding: 20px 20px 20px 40px;}
+#introtext h1 {margin: 0px 0px 20px 0px; color: var(--accent);}
 #introtext p {margin: 0px;}
 @media screen and (min-width: 900px) {
-    #introtext h1 {font-size: 200%;}
-    #introtext p {font-size: 150%;}
+    #introtext h1 {font-size: 300%;}
+    #introtext p {font-size: 120%;}
 }
 @media screen and (min-width: 750px) and (max-width: 900px) {
-    #introtext h1 {font-size: 180%;}
+    #introtext h1 {font-size: 240%;}
     #introtext p {font-size: 120%;}
 }
 @media screen and (max-width: 750px) {
-    #intro{display: block;}
+    #intro-content{display: block;}
     #introtext h1 {font-size: 180%;}
     #introtext p {font-size: 120%;}
 }
 @media screen and (max-width: 750px) and (min-width: 400px) {
     #introimg img {width: 60%; position: relative; left: 50%; transform: translate(-50%,0%);}
+    
 }
 @media screen and (max-width: 600px) and (min-width: 400px) {
     #introimg img {width: 80%;}
+}
+@media screen and (max-width: 400px) {
+    #introtext {padding: 15px;}
 }
 /* end section.intro */
 
@@ -373,9 +423,10 @@ a {text-decoration: none;}
 
 
 /* media */ 
-
-@media screen and (min-width:850px) {
-    #menu-btn {display: none;}
+@media screen and (max-width: 1000px) {
+    #navigation-top #search-cont {display: none;}
+    #navigation-top {grid-template-columns: 210px 1fr auto;}
+    #menu-btn {display: inline-block;}
 }
 @media screen and (max-width: 750px) {
     .hide1 {display: none;}
@@ -391,6 +442,7 @@ a {text-decoration: none;}
     #navigation-top, #nav-cont, #linkbox, #nav-bg, #nav-ph {height: 40px;}
     #logo {height: 30px; margin: 5px;}
     #theme-btn {display: none;}
+    #menu-btn {margin: 0px; padding: 12px; border-radius: 0px;}
     .bars.menulink {margin: 0px; border-radius: 0px;}
 }
 

@@ -74,3 +74,7 @@ article {padding: 20px;}
 .article-page.text span {color: var(--accent) !important;}
 #dot-cont {display: inline-block;}
 .article-page.img img {width: 100% !important;}
+.twitter-tweet {
+    max-width: none !important;
+    min-width: none !important;
+}

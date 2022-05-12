@@ -84,14 +84,14 @@ function themeToggle(theme) {
 
     if (theme == 'light') {
         themebtn.setAttribute('onclick', "themeToggle('dark')");
-        themebtn.classList = "fa-solid fa-circle menulink";
+        themebtn.classList = "fa-solid fa-circle";
     } else {
         if (theme == 'dark') {
             themebtn.setAttribute('onclick', "themeToggle('auto')");
-            themebtn.classList = "fa-solid fa-moon menulink";
+            themebtn.classList = "fa-solid fa-moon";
         } else {
             themebtn.setAttribute('onclick', "themeToggle('light')");
-            themebtn.classList = "fa-solid fa-circle-dot menulink";
+            themebtn.classList = "fa-solid fa-circle-dot";
         }
     }
 }
@@ -131,14 +131,29 @@ for (let i = 0; i < pages.length; i++) {
 var dots = document.getElementsByClassName("dot");
 
 function goToPage(pagenum) {
-    for (let i = 0; i < pages.length; i++) {
-        let cdot = dots[i];
-        let page = pages[i];
-        if (i < pagenum) {page.classList.add('watched');}
-        if (i > pagenum) {page.classList.add('unwatched');}
-        if (i == pagenum) {cdot.classList = "fa-solid fa-circle dot";};
-        if (i != pagenum) {cdot.classList = "fa-solid fa-circle-dot dot";};
+    try {
+        for (let i = 0; i < pages.length; i++) {
+            let cdot = dots[i];
+            let page = pages[i];
+            if (i < pagenum) {page.classList.add('watched');}
+            if (i > pagenum) {page.classList.add('unwatched');}
+            if (i == pagenum) {cdot.classList = "fa-solid fa-circle dot";};
+            if (i != pagenum) {cdot.classList = "fa-solid fa-circle-dot dot";};
+        }
+        pages[pagenum].classList.add('current');
+    } catch (e) {
+        console.log(e);
     }
-    pages[pagenum].classList.add('current');
 }
 goToPage(0);
+
+
+var searchContainer = document.getElementById('search-cont');
+function searchFocus() { 
+    searchContainer.style.border = '2px solid var(--accent)'; 
+    searchContainer.style.padding = '5px';
+}
+function searchBlur() { 
+    searchContainer.style.border = '1px solid transparent';
+    searchContainer.style.padding = '6px'; 
+}

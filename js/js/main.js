@@ -16,9 +16,9 @@ var prevScrollpos = window.pageYOffset;
 var nav = document.getElementById("navigation-top");
 window.onscroll = function() {
 	if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
-		document.getElementById('navigation-top').classList.add("shadow");
+		nav.classList.add("border-bottom");
 	} else {
-	    document.getElementById('navigation-top').classList.remove("shadow");
+		nav.classList.remove("border-bottom");
 	}
 
     if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
@@ -46,7 +46,7 @@ function topFunction() {
 
 function setTheme(theme) {
 	document.body.classList = theme;
-	document.cookie = "theme=" + theme + "; secure"
+	document.cookie = "theme=" + theme + "; secure";
 }
 
 
@@ -86,3 +86,13 @@ function getCookie(cname) {
 // 		isSidanavOpen = false;
 // 	}
 // }
+var searchCompresseed = document.querySelector("#search-cont.compressed");
+var searchContainer = document.getElementById('search-cont');
+    function searchFocus() { 
+        searchContainer.style.border = '3px solid var(--accent)'; 
+        searchContainer.style.padding = '2px';
+    }
+    function searchBlur() { 
+        searchContainer.style.border = '1px solid var(--border-color)';
+        searchContainer.style.padding = '4px'; 
+    }
