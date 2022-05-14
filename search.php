@@ -67,7 +67,7 @@
     <form id="search-cont" method="get">
         <button type="submit" id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         <input type="text" name="text" placeholder="шукати.." autocomplete="off" onfocus="searchFocus()" onblur="searchBlur()">
-        <button type="button" id="clear-btn" onclick="searchboxCondClear()"><i class="fa-solid fa-xmark"></i></button>
+        <button type="button" id="clear-btn" onclick="searchClear()"><i class="fa-solid fa-xmark"></i></button>
     </form>
 </header>
 <div id="results-box">
@@ -88,9 +88,9 @@ if (isset($_GET['text'])) {
             <div class='text'>
                 <div class='breadcrumps'><p>
                     <a href='index'>Головна</a> 
-                    <i class='fa-solid fa-angles-right'></i> 
+                    <i class='fa-solid fa-angle-right'></i> 
                     <a href='search?theme=".$theme."'>".$theme."</a> 
-                    <i class='fa-solid fa-angles-right'></i> 
+                    <i class='fa-solid fa-angle-right'></i> 
                 </p></div>
                 <h2 onclick=\"location.href='article?articleid=".$article['id']."'\">".$article['header']."</h2>
                 <div class='tags'>";
@@ -118,9 +118,9 @@ if (isset($_GET['theme'])) {
             <div class='text'>
                 <div class='breadcrumps'><p>
                     <a href='index'>Головна</a> 
-                    <i class='fa-solid fa-angles-right'></i> 
+                    <i class='fa-solid fa-angle-right'></i> 
                     <a href='search?theme=".$theme."'>".$theme."</a> 
-                    <i class='fa-solid fa-angles-right'></i> 
+                    <i class='fa-solid fa-angle-right'></i> 
                 </p></div>
                 <h2 onclick=\"location.href='article?articleid=".$article['id']."'\">".$article['header']."</h2>
                 <div class='tags'>";
@@ -148,9 +148,9 @@ if (isset($_GET['tag'])) {
             <div class='text'>
                 <div class='breadcrumps'><p>
                     <a href='index'>Головна</a> 
-                    <i class='fa-solid fa-angles-right'></i> 
+                    <i class='fa-solid fa-angle-right'></i> 
                     <a href='search?theme=".$theme."'>".$theme."</a> 
-                    <i class='fa-solid fa-angles-right'></i> 
+                    <i class='fa-solid fa-angle-right'></i> 
                 </p></div>
                 <h2 onclick=\"location.href='article?articleid=".$article['id']."'\">".$article['header']."</h2>
                 <div class='tags'>";
@@ -265,8 +265,15 @@ if (isset($_GET['tag'])) {
         searchContainer.style.border = '4px solid transparent';
         searchContainer.style.padding = '12px'; 
     }
+    var searchInput = document.querySelector('#search-cont input');
+    function searchClear() {
+        searchInput.value = "";
+    }
+
     var drop = document.getElementsByClassName("dropbox");
-    function dropboxShow(num) { drop[num].style.display = "block"; }
-    function dropboxHide(num) { drop[num].style.display = "none"; }
+    var navlinkicon = document.querySelectorAll(".hover-drop .menulink i");
+    function dropboxShow(num) { drop[num].style.display = "block"; navlinkicon[num].setAttribute('style', 'transform: rotate(180deg);')}
+    function dropboxHide(num) { drop[num].style.display = "none"; navlinkicon[num].setAttribute('style', '')}
+
 </script>
 </body></html>

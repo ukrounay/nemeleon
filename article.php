@@ -47,8 +47,8 @@ try {
 
     <form id="search-cont-cond" method="get" action="search">
         <button type="submit" id="search-btn-cond"><i class="fa-solid fa-magnifying-glass"></i></button>
-        <input type="text" name="text" placeholder="шукати.." autocomplete="off">
-        <div id="clear-btn-cond"><i class="fa-solid fa-xmark"></i></div>
+        <input type="text" name="text" placeholder="шукати.." autocomplete="off" onfocus="searchCondFocus()" onblur="searchCondBlur()">
+        <button type="button" id="clear-btn-cond" onclick="searchClear()"><i class="fa-solid fa-xmark"></i></button>
     </form>
 
     <div id="linkbox">

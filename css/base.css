@@ -190,6 +190,8 @@ a {text-decoration: none;}
 
 #menu-btn:hover, #theme-btn:hover, #log-btn:hover {background-color: var(--items-hover-color);}
 
+.hover-drop .menulink i {transition: 0.3s;}
+
 /* end nav */
 
 

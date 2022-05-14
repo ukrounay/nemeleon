@@ -74,8 +74,9 @@ window.onscroll = function() {
 
 
 var drop = document.getElementsByClassName("dropbox");
-function dropboxShow(num) { drop[num].style.display = "block"; }
-function dropboxHide(num) { drop[num].style.display = "none"; }
+var navlinkicon = document.querySelectorAll(".hover-drop .menulink i");
+function dropboxShow(num) { drop[num].style.display = "block"; navlinkicon[num].setAttribute('style', 'transform: rotate(180deg);')}
+function dropboxHide(num) { drop[num].style.display = "none"; navlinkicon[num].setAttribute('style', '')}
 
 function topFunction() {
 	document.body.scrollTop = "0px";
@@ -164,4 +165,8 @@ function searchCondFocus() {
 function searchCondBlur() { 
     searchContCond.style.border = '1px solid transparent';
     searchContCond.style.padding = '6px'; 
+}
+var searchInput = document.querySelector('#search-cont-cond input');
+function searchClear() {
+    searchInput.value = "";
 }
