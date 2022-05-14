@@ -78,20 +78,27 @@ if (isset($_GET['text'])) {
     $qtext = $_GET['text'];
     echo '<p>Ваш запит: '.$qtext.'</p>';
     $link = mysqli_connect("localhost", "root", "", "nemeleon");
-    mysqli_connect("localhost", "root", "", "nemeleon");
-    // $query = ' `header` LIKE %'.$qtext.'% OR tags LIKE%'.$qtext.'% OR theme LIKE%'.$qtext.'% ';
-    // $qresult = R::find( 'articles', ' header LIKE ? ', [ '%i%' ] );
-    // $qresult = R::findAll( 'book' , $query );
-    // $query = "SELECT * FROM `articles` WHERE header LIKE '%i%'";
-    // SELECT * FROM `articles` WHERE header LIKE %'.$text.'% OR tags LIKE%'.$text.'% OR theme LIKE%'.$text.'%
-    // $qresult = R::getAll("SELECT * FROM `articles` WHERE header LIKE '%i%';");
-    // array_shift($qresult);
     $qresult = mysqli_query($link, "SELECT * FROM articles WHERE header LIKE '%".$qtext."%' OR tags LIKE '%".$qtext."%' OR theme LIKE '%".$qtext."%'");
-    while ($row = mysqli_fetch_array($qresult)) {
-        echo "id: " . $row['id'] . "<br>header: " . $row['header'] . "<br>";
+    while ($article = mysqli_fetch_array($qresult)) {
+        $querytags = explode(";", $article['tags']);
+        foreach ($querytags as $qtag) {
+            $tags[] = "<div class='tag'>".$qtag."</div>";
+        }
+        echo "
+        <div class='article'>
+            <div class='text'>
+                <h3>".$article['header']."</h3>
+                <div class='tags'>";
+        foreach ($tags as $tag){echo $tag;}        
+        echo "
+                </div>
+            </div>
+            <div class='image'>
+                <img src='".$article['indeximg']."' alt='".$article['header']."'>
+            </div>
+        </div>
+        ";
     }
-    // SELECT СТОЛБЦЫ FROM ИМЯ_ТАБЛИЦЫ 
-    // WHERE ИМЯ_СТОЛБЦА LIKE ВЫРАЖЕНИЕ 
 }
 
 if (isset($_GET['theme'])) {
