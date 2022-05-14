@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>http://localhost/</loc>
+        <changefreq>always</changefreq>
+        <priority>1</priority>
+    </url>
+    <url>
+        <loc>http://localhost/article</loc>
+        <changefreq>always</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://localhost/search</loc>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>http://localhost/login</loc>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>http://localhost/signup</loc>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>http://localhost/add</loc>
+        <changefreq>always</changefreq>
+        <priority>0</priority>
+    </url>
+</urlset> 
