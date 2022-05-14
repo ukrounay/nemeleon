@@ -146,14 +146,12 @@ function goToPage(pagenum) {
     }
 }
 goToPage(0);
-
-
-var searchContainer = document.getElementById('search-cont');
-function searchFocus() { 
-    searchContainer.style.border = '2px solid var(--accent)'; 
-    searchContainer.style.padding = '5px';
+var searchContCond = document.getElementById('search-cont-cond');
+function searchCondFocus() { 
+    searchContCond.style.border = '3px solid var(--accent)'; 
+    searchContCond.style.padding = '4px';
 }
-function searchBlur() { 
-    searchContainer.style.border = '1px solid transparent';
-    searchContainer.style.padding = '6px'; 
+function searchCondBlur() { 
+    searchContCond.style.border = '1px solid transparent';
+    searchContCond.style.padding = '6px'; 
 }

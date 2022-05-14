@@ -71,14 +71,19 @@
 <section>
     <h2>Додавання статей</h2>
     <form action="add" method="post">
+
         <label> Введіть заголовок статті</label>
         <input type="text" class="form-control" name="header" id="name" placeholder="//" required><br>
+
         <label>Вкажіть посилання на картинку статті</label>
         <textarea class="form-control" name="indeximg" id="indeximg" placeholder="//" required></textarea><br>
+
         <label> Введіть посилання та його тип, 'url;type|url;type'. Доступні типи: 'img', 'wiki'. По мірі додавання контенту я буду писати парсери для інших сайтів та типів даних.</label>
         <textarea class="form-control" name="urls" id="urls" placeholder="//" required></textarea><br>
+
         <label> Введіть теги статті 'tag;tag'</label>
         <textarea class="form-control" name="tags" id="tags" placeholder="//" required></textarea><br>
+
         <label>Виберіть тематику статті</label>
         <select class="form-control" name="theme" id="theme">
             <option value="Загальне" selected>Загальне</option>
@@ -87,9 +92,12 @@
             <option value="Події">Події</option>
             <option value="Блог">Блог</option>
         </select><br>
+
         <button class="btn btn-success" name="add" type="submit">Додати статтю</button>
-        <button onclick="location.href='index'">Головна</button>
-        <button onclick="location.href='http://127.0.0.1/openserver/phpmyadmin/index.php?route=/database/structure&server=1&db=nemeleon'">База даних</button>
+
+        <button onclick="location.href='index'" type="button">Головна</button>
+
+        <button onclick="location.href='http://127.0.0.1/openserver/phpmyadmin/index.php?route=/database/structure&server=1&db=nemeleon'" type="button">База даних</button>
 
     </form>
     <div class="quote good">

@@ -1,3 +1,22 @@
+<?php 
+$title="Увійти"; 
+require "libs/db.php"; 
+$data = $_POST;
+if(isset($data['do_login'])) { 
+    $errors = array();
+    $user = R::findOne('users', 'login = ?', array($data['login']));
+
+    if($user) {
+        if(password_verify($data['password'], $user->password)) {
+            $_SESSION['logged_user'] = $user;
+            header('Location: index');
+        } else {
+            $errors[] = 'Пароль неправильний!';
+        }
+    } else {$errors[] = 'Користувач з таким логіном не зареєстрований.';}
+    if(!empty($errors)) {echo '<div class="quote bad"><p>' . array_shift($errors). '</p></div>';}
+}
+?>
 <!DOCTYPE html>
 <html lang="ua">
 <head>
@@ -57,37 +76,6 @@
 			<button onclick="go('signup')">Зареєструватись</button>
 			<button onclick="go('index')">Головна</button>
 		</form>
-<?php 
-$title="Увійти"; 
-require "libs/db.php"; 
-$data = $_POST;
-if(isset($data['do_login'])) { 
- $errors = array();
- $user = R::findOne('users', 'login = ?', array($data['login']));
-
- if($user) {
-
- 	if(password_verify($data['password'], $user->password)) {
-
- 		$_SESSION['logged_user'] = $user;
- 		
-                header('Location: index');
-
- 	} else {
-    
-    $errors[] = 'Пароль неправильний!';
-
- 	}
-
- } else {
- 	$errors[] = 'Користувач з таким логіном не зареєстрований.';
- }
-
-if(!empty($errors)) {
-		echo '<div class="quote bad"><p>' . array_shift($errors). '</p></div>';
-	}
-}
-?>
 <script>
     function go(loc) {
         inputs = document.querySelectorAll('input');
