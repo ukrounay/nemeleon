@@ -46,11 +46,18 @@ function hideLoader() {
 isSidanavOpen = false;
 var prevScrollpos = window.pageYOffset;
 var nav = document.getElementById("nav-bg");
+var navColorSpace = document.getElementById('nav-color-space');
 window.onscroll = function() {
 	if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
-		nav.classList.add("shadow");
+		nav.classList.add("shadow");    
+        try {
+            navColorSpace.classList.remove('darknav');
+        } catch (e) {}
 	} else {
 	    nav.classList.remove("shadow");
+        try {
+            navColorSpace.classList.add('darknav');
+        } catch (e) {}
 	}
 
     // if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
@@ -85,13 +92,16 @@ function themeToggle(theme) {
     if (theme == 'light') {
         themebtn.setAttribute('onclick', "themeToggle('dark')");
         themebtn.classList = "fa-solid fa-circle";
+        themebtn.title = "Світла";
     } else {
         if (theme == 'dark') {
             themebtn.setAttribute('onclick', "themeToggle('auto')");
             themebtn.classList = "fa-solid fa-moon";
+            themebtn.title = "Темна";
         } else {
             themebtn.setAttribute('onclick', "themeToggle('light')");
             themebtn.classList = "fa-solid fa-circle-dot";
+            themebtn.title = "Авто";
         }
     }
 }

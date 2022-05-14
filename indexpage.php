@@ -10,7 +10,7 @@
         <form id="search-cont-cond" method="get" action="search">
             <button type="submit" id="search-btn-cond"><i class="fa-solid fa-magnifying-glass"></i></button>
             <input type="text" name="text" placeholder="шукати.." autocomplete="off" onfocus="searchCondFocus()" onblur="searchCondBlur()">
-            <div id="clear-btn-cond"><i class="fa-solid fa-xmark"></i></div>
+            <button type="button" id="clear-btn-cond" onclick="searchboxCondClear()"><i class="fa-solid fa-xmark"></i></button>
         </form>
 
         <div id="linkbox">
@@ -31,7 +31,7 @@
         </div>
 
         <div id="iconbox">
-            <i id="theme-btn" onclick="themeToggle('light')" class="fa-solid fa-circle-dot"></i>
+            <i id="theme-btn" onclick="themeToggle('light')" class="fa-solid fa-circle-dot" title="Авто"></i>
 
             <i id="log-btn" onclick="location.href = 'user'" class="fa-solid fa-user hide3"></i>
 

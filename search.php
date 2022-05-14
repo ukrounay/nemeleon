@@ -63,14 +63,14 @@
     </div>
 
 </nav>
-<header style="max-width: 1000px; margin: auto;">
+<header style="max-width: 800px; margin: auto;">
     <form id="search-cont" method="get">
         <button type="submit" id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         <input type="text" name="text" placeholder="шукати.." autocomplete="off" onfocus="searchFocus()" onblur="searchBlur()">
-        <button type="button" id="clear-btn"><i class="fa-solid fa-xmark"></i></button>
+        <button type="button" id="clear-btn" onclick="searchboxCondClear()"><i class="fa-solid fa-xmark"></i></button>
     </form>
 </header>
-<div id="results-box" style="max-width: 1000px; padding: 10px; margin: auto;">
+<div id="results-box">
 
 <?php
 
@@ -79,23 +79,26 @@ if (isset($_GET['text'])) {
     echo '<p>Ваш запит: '.$qtext.'</p>';
     $link = mysqli_connect("localhost", "root", "", "nemeleon");
     $qresult = mysqli_query($link, "SELECT * FROM articles WHERE header LIKE '%".$qtext."%' OR tags LIKE '%".$qtext."%' OR theme LIKE '%".$qtext."%'");
+    
     while ($article = mysqli_fetch_array($qresult)) {
-        $querytags = explode(";", $article['tags']);
-        foreach ($querytags as $qtag) {
-            $tags[] = "<div class='tag'>".$qtag."</div>";
-        }
+        $tags = explode(";", $article['tags']);
+        $theme = $article['theme'];
         echo "
-        <div class='article'>
+        <div class='article' onclick=\"location.href='article?articleid=".$article['id']."'\">
             <div class='text'>
-                <h3>".$article['header']."</h3>
+                <div class='breadcrumps'><p>
+                    <a href='index'>Головна</a> 
+                    <i class='fa-solid fa-angles-right'></i> 
+                    <a href='search?theme=".$theme."'>".$theme."</a> 
+                    <i class='fa-solid fa-angles-right'></i> 
+                </p></div>
+                <h2 onclick=\"location.href='article?articleid=".$article['id']."'\">".$article['header']."</h2>
                 <div class='tags'>";
-        foreach ($tags as $tag){echo $tag;}        
+        foreach ($tags as $tag) {echo "<div class='tag' onclick=\"location.href='search?tag=".$tag."'\">".$tag."</div>";}     
         echo "
                 </div>
             </div>
-            <div class='image'>
-                <img src='".$article['indeximg']."' alt='".$article['header']."'>
-            </div>
+            <div class='image' onclick=\"location.href='article?articleid=".$article['id']."'\" style='background-image: url(".$article['indeximg'].");'></div>
         </div>
         ";
     }
@@ -104,11 +107,61 @@ if (isset($_GET['text'])) {
 if (isset($_GET['theme'])) {
     $qtheme = $_GET['theme'];
     echo '<p>Тема статей для відбору: '.$qtheme.'</p>';
+    $link = mysqli_connect("localhost", "root", "", "nemeleon");
+    $qresult = mysqli_query($link, "SELECT * FROM articles WHERE theme LIKE '%".$qtheme."%'");
+
+    while ($article = mysqli_fetch_array($qresult)) {
+        $tags = explode(";", $article['tags']);
+        $theme = $article['theme'];
+        echo "
+        <div class='article' onclick=\"location.href='article?articleid=".$article['id']."'\">
+            <div class='text'>
+                <div class='breadcrumps'><p>
+                    <a href='index'>Головна</a> 
+                    <i class='fa-solid fa-angles-right'></i> 
+                    <a href='search?theme=".$theme."'>".$theme."</a> 
+                    <i class='fa-solid fa-angles-right'></i> 
+                </p></div>
+                <h2 onclick=\"location.href='article?articleid=".$article['id']."'\">".$article['header']."</h2>
+                <div class='tags'>";
+        foreach ($tags as $tag) {echo "<div class='tag' onclick=\"location.href='search?tag=".$tag."'\">".$tag."</div>";}     
+        echo "
+                </div>
+            </div>
+            <div class='image' onclick=\"location.href='article?articleid=".$article['id']."'\" style='background-image: ".$article['indeximg'].";'></div>
+        </div>
+        ";
+    }
 }
 
 if (isset($_GET['tag'])) {
     $qtag = $_GET['tag'];
     echo '<p>Пошук за тегом: '.$qtag.'</p>';
+    $link = mysqli_connect("localhost", "root", "", "nemeleon");
+    $qresult = mysqli_query($link, "SELECT * FROM articles WHERE tags LIKE '%".$qtag."%'");
+
+    while ($article = mysqli_fetch_array($qresult)) {
+        $tags = explode(";", $article['tags']);
+        $theme = $article['theme'];
+        echo "
+        <div class='article' onclick=\"location.href='article?articleid=".$article['id']."'\">
+            <div class='text'>
+                <div class='breadcrumps'><p>
+                    <a href='index'>Головна</a> 
+                    <i class='fa-solid fa-angles-right'></i> 
+                    <a href='search?theme=".$theme."'>".$theme."</a> 
+                    <i class='fa-solid fa-angles-right'></i> 
+                </p></div>
+                <h2 onclick=\"location.href='article?articleid=".$article['id']."'\">".$article['header']."</h2>
+                <div class='tags'>";
+        foreach ($tags as $tag) {echo "<div class='tag' onclick=\"location.href='search?tag=".$tag."'\">".$tag."</div>";}     
+        echo "
+                </div>
+            </div>
+            <div class='image' onclick=\"location.href='article?articleid=".$article['id']."'\" style='background-image: ".$article['indeximg'].";'></div>
+        </div>
+        ";
+    }
 }
 
 
