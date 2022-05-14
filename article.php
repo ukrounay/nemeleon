@@ -94,9 +94,9 @@ try {
         <div id="breadcrumps">
             <p>
                 <a href="index">Головна</a> 
-                <i class="fa-solid fa-angles-right"></i> 
+                <i class="fa-solid fa-angle-right"></i>
                 <?php $theme = $article['theme']; echo '<a href="search?theme='.$theme.'"'.$theme.'>'.$theme.'</a>';?> 
-                <i class="fa-solid fa-angles-right"></i> 
+                <i class="fa-solid fa-angle-right"></i>
             </p>
         </div>
         <h1 id="article-title"><?php echo $header;?></h1>

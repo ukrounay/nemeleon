@@ -57,11 +57,18 @@
     }
     button:hover {border: 5px solid #10aaaa; padding: 7px;}
     .quote {
+        box-sizing: border-box;
+        position: relative;
+        left: 50%;
+        transform: translate(-50%,0%);
         display: grid;
         grid-template-columns: 1fr 20px; 
         padding: 20px; 
         margin: 10px 0px; 
         border-radius: 8px;
+        overflow: hidden;
+        transition: 1s;
+        width: 100%;
     }
     .quote.good {background-color: #10aaaa50; }
     .quote p {line-height: 1.0; margin: 0px;}
@@ -69,6 +76,10 @@
 <meta name="theme-color" content="#202020">
 <body>
 <section>
+    <div class="quote good">
+        <p>Перед вставлянням тексту треба обовязково збільшити розмір текстового поля, бо при переповненні чомусь можливість змінити розмір пропадає.</p>
+        <i class="fa-solid fa-xmark" onclick="quoteHide(0)"></i>
+    </div>
     <h2>Додавання статей</h2>
     <form action="add" method="post">
 
@@ -100,13 +111,9 @@
         <button onclick="location.href='http://127.0.0.1/openserver/phpmyadmin/index.php?route=/database/structure&server=1&db=nemeleon'" type="button">База даних</button>
 
     </form>
-    <div class="quote good">
-        <p>Перед вставлянням тексту треба обовязково збільшити розмір текстового поля, бо при переповненні чомусь можливість змінити розмір пропадає.</p>
-        <i class="fa-solid fa-xmark" onclick="quoteHide(0)"></i>
-    </div>
 </section>
 <script>
-    function quoteHide(num) {document.getElementsByClassName("quote")[num].style.opacity = '0';}
+    function quoteHide(num) {document.getElementsByClassName("quote")[num].style.display = 'none';}
 </script>
 </body>
 </html>
