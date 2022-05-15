@@ -7,20 +7,23 @@
         $article->header = $data['header'];
         $article->indeximg = $data['indeximg'];
 
-        $urls[] = $data['url'];
-        $types[] = $data['type'];
-        for ($i=0; $i < count($urls); $i++) {
-            $pieces = [$urls[$i],$types[$i]];
-            $urls[$i] = implode('||', $pieces);
-        }
 
-        $urlset = implode('|||', $urls);
-        $article->urls = $urlset;
+        // $urls[] = $data['url'];
+        // $types[] = $data['type'];
+        // for ($i=0; $i < count($urls); $i++) {
+        //     $pieces = [$urls[$i],$types[$i]];
+        //     $urls[$i] = implode('||', $pieces);
+        // }
 
+        // $urlset = implode('|||', $urls);
+        // $article->urls = $urlset;
+
+
+        $article->urls = $data['urls'];
         $article->tags = $data['tags'];
         $article->theme = $data['theme'];
         R::store($article);
-        echo '<p>додавання статей через цю сторінку тимчасово не працюэ, я задовбався писати цей код в час ночі</p>';
+        // echo '<p>додавання статей через цю сторінку тимчасово не працюэ, я задовбався писати цей код в час ночі</p>';
     }
 ?>
 <!DOCTYPE html>
@@ -102,15 +105,16 @@
         <textarea class="form-control" name="indeximg" id="indeximg" placeholder="//" required></textarea><br>
 
         <label> Введіть посилання та його тип. По мірі додавання контенту я буду писати парсери для інших сайтів та типів даних.</label>
-        <div class="link">
+        <textarea class="form-control" name="urls" placeholder="//" required></textarea>
+        <!-- <div class="link">
             <textarea class="form-control" name="url[]" placeholder="//" required></textarea>
             <select name="type[]" class="form-control" required>
                 <option value="img">img</option>
                 <option value="wiki">wiki</option>
                 <option value="tweet">tweet</option>
             </select>
-        </div>
-        <button onclick="addBefore()" type="button" id="add-btn"><i class="fa-solid fa-plus"></i></button>
+        </div> -->
+        <!-- <button onclick="addBefore()" type="button" id="add-btn"><i class="fa-solid fa-plus"></i></button> -->
 
         <label> Введіть теги статті 'tag;tag'</label>
         <textarea class="form-control" name="tags" id="tags" placeholder="//" required></textarea><br>
