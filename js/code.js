@@ -50,16 +50,17 @@ var navColorSpace = document.getElementById('nav-color-space');
 window.onscroll = function() {
 	if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
 		nav.classList.add("shadow");    
-        try {
-            navColorSpace.classList.remove('darknav');
-        } catch (e) {}
 	} else {
 	    nav.classList.remove("shadow");
-        try {
-            navColorSpace.classList.add('darknav');
-        } catch (e) {}
 	}
-
+    try {
+        var introHeight = document.getElementById('intro').clientHeight;
+        if (document.body.scrollTop > introHeight || document.documentElement.scrollTop > introHeight) {
+            navColorSpace.classList.remove('darknav');
+        } else {
+            navColorSpace.classList.add('darknav');
+        }
+    } catch (e) {}
     // if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
 	//     var currentScrollPos = window.pageYOffset;
 	//     if (prevScrollpos > currentScrollPos) {

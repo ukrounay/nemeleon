@@ -2,13 +2,25 @@
     require "libs/db.php"; 
     if (!empty($_POST)) {
         $data = $_POST;
+
         $article = R::dispense('articles');
         $article->header = $data['header'];
         $article->indeximg = $data['indeximg'];
-        $article->urls = $data['urls'];
+
+        $urls[] = $data['url'];
+        $types[] = $data['type'];
+        for ($i=0; $i < count($urls); $i++) {
+            $pieces = [$urls[$i],$types[$i]];
+            $urls[$i] = implode('||', $pieces);
+        }
+
+        $urlset = implode('|||', $urls);
+        $article->urls = $urlset;
+
         $article->tags = $data['tags'];
         $article->theme = $data['theme'];
         R::store($article);
+        echo '<p>додавання статей через цю сторінку тимчасово не працюэ, я задовбався писати цей код в час ночі</p>';
     }
 ?>
 <!DOCTYPE html>
@@ -31,7 +43,6 @@
     label {line-height: 1.0; margin: 10px 0px;}
     textarea {
         max-width: 600px; 
-        min-width: 600px; 
         min-height: 40px; 
         border-radius: 8px 8px 0px 8px !important; 
         font-family: sans-serif; 
@@ -72,6 +83,7 @@
     }
     .quote.good {background-color: #10aaaa50; }
     .quote p {line-height: 1.0; margin: 0px;}
+    .link {display: grid; grid-template-columns: 1fr auto; gap: 10px;}
 </style>
 <meta name="theme-color" content="#202020">
 <body>
@@ -89,8 +101,16 @@
         <label>Вкажіть посилання на картинку статті</label>
         <textarea class="form-control" name="indeximg" id="indeximg" placeholder="//" required></textarea><br>
 
-        <label> Введіть посилання та його тип, 'url;type|url;type'. Доступні типи: 'img', 'wiki'. По мірі додавання контенту я буду писати парсери для інших сайтів та типів даних.</label>
-        <textarea class="form-control" name="urls" id="urls" placeholder="//" required></textarea><br>
+        <label> Введіть посилання та його тип. По мірі додавання контенту я буду писати парсери для інших сайтів та типів даних.</label>
+        <div class="link">
+            <textarea class="form-control" name="url[]" placeholder="//" required></textarea>
+            <select name="type[]" class="form-control" required>
+                <option value="img">img</option>
+                <option value="wiki">wiki</option>
+                <option value="tweet">tweet</option>
+            </select>
+        </div>
+        <button onclick="addBefore()" type="button" id="add-btn"><i class="fa-solid fa-plus"></i></button>
 
         <label> Введіть теги статті 'tag;tag'</label>
         <textarea class="form-control" name="tags" id="tags" placeholder="//" required></textarea><br>
@@ -114,6 +134,14 @@
 </section>
 <script>
     function quoteHide(num) {document.getElementsByClassName("quote")[num].style.display = 'none';}
+    function addBefore(){
+        var linkCont = document.createElement("div");
+        linkCont.classList.add('link');
+        linkCont.innerHTML = '<textarea class="form-control" name="url[]" placeholder="//" required></textarea><select name="type[]" class="form-control" required><option value="img">img</option><option value="wiki">wiki</option><option value="tweet">tweet</option></select>'
+        var addBtn = document.getElementById("add-btn");
+        var parentDiv = addBtn.parentNode;
+        parentDiv.insertBefore(linkCont, addBtn);
+    }
 </script>
 </body>
 </html>

@@ -65,6 +65,9 @@
     </section>
 
     <section id="join">
+        <h1>Stolen from:</h1>
+        <a href="https://www.patreon.com/">patreon, intro from this</a><br>
+        <a href="https://medium.com/">medium, navbar color as here</a><br>
         <div style="width: 100%; height: 100%; position: relative; z-index: 0; background-color: black; opacity: 0.6;"></div>
         <h1>Приєднуйтесь до нашої спільноти</h1>
         <p>Дізнавайтесь про новини сайту з багатьох інших джерел</p>
