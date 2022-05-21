@@ -28,7 +28,7 @@ try {
     <!-- <meta property="og:locale" content="ua_UA" /> -->
     <!-- <script src="https://kit.fontawesome.com/607590d81b.js" crossorigin="anonymous"></script> -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script> -->
-    <script src="js/code.js" defer></script>
+    
 </head>
 <body class="auto">
 
@@ -140,6 +140,6 @@ try {
         unset($value);
     ?>
 </article>
-
+<script src="js/code.js"></script>
 <!-- <script src="js/pages.js"></script> -->
 </body></html>

@@ -2,23 +2,24 @@ var loader = document.querySelector('.loader');
 var loadlogopath = document.querySelectorAll('.loadlogo')[0];
 var loadlogo = document.querySelector('.loader svg');
 var i = 0;
+var navColorSpace = document.getElementById('nav-color-space');
 window.onload = function() {
 	if (getCookie('theme') == "dark") { themeToggle('dark'); } else {
 	if (getCookie('theme') == "light") { themeToggle('light'); } else { themeToggle('auto'); }}
-
     loadlogo.style.animationIterationCount = "1";
     if (getCookie('first') != "false") {
         setTimeout(sayHello, 2000);    
         document.cookie = "first=false; secure"
-    } else {document.getElementById('hoverbox').style.display = "none";}
-
-    
+    } else {
+        document.getElementById('hoverbox').style.display = "none"; 
+        try {navColorSpace.classList.add("darknav");} catch (e) {console.log(e);}
+    }   
 }
 
 function sayHello() {
     
-    loadlogopath.setAttribute('style', 'fill: #10aaaa');
-    loadlogo.setAttribute('style', '')
+    loadlogopath.setAttribute('style', 'fill: var(--accent)');
+    loadlogo.setAttribute('style', '');
     loader.style.height = "200px";
     setTimeout(writeHello, 1000);
     setTimeout(hideLoader, 2500);
@@ -36,8 +37,7 @@ function writeHello() {
 
 function hideLoader() {
     loader.style.opacity = '0.0';
-    setTimeout(function(){document.getElementById('hoverbox').setAttribute('style', 'background-color: var(--accent); left: 50%; width: 0px; height: 0px; top:50%; transform: rotate(180deg); border-radius:100%; opacity: 0.5');}, 500);
-    
+    setTimeout(function(){document.getElementById('hoverbox').setAttribute('style', 'background-color: var(--accent); left: 50%; width: 0px; height: 0px; top:50%; transform: rotate(180deg); border-radius:100%; opacity: 0.5'); navColorSpace.classList.add("darknav");}, 500);
 }
 
 
@@ -46,7 +46,7 @@ function hideLoader() {
 isSidanavOpen = false;
 var prevScrollpos = window.pageYOffset;
 var nav = document.getElementById("nav-bg");
-var navColorSpace = document.getElementById('nav-color-space');
+
 window.onscroll = function() {
 	if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
 		nav.classList.add("shadow");    
@@ -160,12 +160,10 @@ function goToPage(pagenum) {
 goToPage(0);
 var searchContCond = document.getElementById('search-cont-cond');
 function searchCondFocus() { 
-    searchContCond.style.border = '3px solid var(--accent)'; 
-    searchContCond.style.padding = '4px';
+    searchContCond.style.borderColor = 'var(--accent)'; 
 }
 function searchCondBlur() { 
-    searchContCond.style.border = '1px solid transparent';
-    searchContCond.style.padding = '6px'; 
+    searchContCond.style.borderColor = 'transparent';
 }
 var searchInput = document.querySelector('#search-cont-cond input');
 function searchClear() {

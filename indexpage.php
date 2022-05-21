@@ -1,6 +1,6 @@
 <?php ?>
 <div id="site">
-<div id="nav-color-space" class="darknav">
+<div id="nav-color-space" class="">
     <div id="nav-ph"></div>
     <div id="nav-bg"></div>
     <nav id="navigation-top">

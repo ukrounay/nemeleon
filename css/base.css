@@ -111,7 +111,7 @@ a {text-decoration: none;}
 /* nav */
 #nav-ph {
     width: 100%;
-    height: 60px;
+    height: 60px;   
     background-color: var(--main-bg-color);
 }
 #nav-bg {
@@ -307,14 +307,14 @@ a {text-decoration: none;}
 @media screen and (max-width: 600px) {#nav { grid-template-columns: 0px 1fr 0px;}}
 #search-cont-cond {
     margin: 10px;
-    padding: 6px;
+    padding: 4px;
     background-color: var(--container-color);
     height: 40px;
     /* border: 2px solid var(--border-color); */
     border-radius: 8px;
     display: grid;
     grid-template-columns: auto 1fr auto;
-    border: 1px solid transparent;
+    border: 3px solid transparent;
     max-width: 300px;
 }
 

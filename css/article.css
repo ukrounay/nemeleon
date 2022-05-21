@@ -46,8 +46,8 @@ header {max-width: 1000px; margin: auto;}
     display: inline-block;
     box-sizing: border-box;
     margin: 0px 4px 4px 0px;
-    padding: 6px 8px 8px;
-    border: 1px solid var(--border-color);
+    padding: 4px 6px 6px;
+    border: 3px solid var(--border-color);
     border-radius: 8px;
     color: var(--accent);
     transition: all 0.2s;
@@ -55,7 +55,7 @@ header {max-width: 1000px; margin: auto;}
     font-size: 16px;
     height: 32px;
 }
-.tag:hover {background-color: var(--items-hover-color); border: 3px solid var(--accent); padding: 4px 6px 6px;}
+.tag:hover {background-color: var(--items-hover-color); border-color: var(--accent); }
 .auto .tag:hover, .light .tag:hover {color: var(--main-color)}
 #article-title {margin: 5px 0px 20px;}
 .article-page {
