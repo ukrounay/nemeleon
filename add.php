@@ -6,20 +6,20 @@
         $article = R::dispense('articles');
         $article->header = $data['header'];
         $article->indeximg = $data['indeximg'];
+        
+        foreach ($_POST['url'] as $row) { $urls[] = $row; }
+        foreach ($_POST['type'] as $row) { $types[] = $row; }
+        for ($i = 0; $i < count($urls); $i++) {
+            $pieces[] = $urls[$i];
+            $pieces[] = $types[$i];
+            $urls[$i] = implode('||', $pieces);
+        }
+
+        $urlset = implode('|||', $urls);
+        $article->urls = $urlset;
 
 
-        // $urls[] = $data['url'];
-        // $types[] = $data['type'];
-        // for ($i=0; $i < count($urls); $i++) {
-        //     $pieces = [$urls[$i],$types[$i]];
-        //     $urls[$i] = implode('||', $pieces);
-        // }
-
-        // $urlset = implode('|||', $urls);
-        // $article->urls = $urlset;
-
-
-        $article->urls = $data['urls'];
+        // $article->urls = $data['urls'];
         $article->tags = $data['tags'];
         $article->theme = $data['theme'];
         R::store($article);
@@ -105,16 +105,18 @@
         <textarea class="form-control" name="indeximg" id="indeximg" placeholder="//" required></textarea><br>
 
         <label> Введіть посилання та його тип. По мірі додавання контенту я буду писати парсери для інших сайтів та типів даних.</label>
-        <textarea class="form-control" name="urls" placeholder="//" required></textarea>
-        <!-- <div class="link">
-            <textarea class="form-control" name="url[]" placeholder="//" required></textarea>
-            <select name="type[]" class="form-control" required>
-                <option value="img">img</option>
-                <option value="wiki">wiki</option>
-                <option value="tweet">tweet</option>
+        <!-- <textarea class="form-control" name="urls" placeholder="//" required></textarea> -->
+        <div class="link">
+            <textarea class="form-control" name="url[0]" placeholder="//" required></textarea>
+            <select name="type[0]" class="form-control" required>
+                <option value="text">текст/html</option>
+                <option value="img">картинка</option>
+                <option value="video">відео</option>
+                <option value="wiki">вікіпедія</option>
+                <option value="tweet">віджет твіта</option>
             </select>
-        </div> -->
-        <!-- <button onclick="addBefore()" type="button" id="add-btn"><i class="fa-solid fa-plus"></i></button> -->
+        </div>
+        <button onclick="addBefore()" type="button" id="add-btn"><i class="fa-solid fa-plus"></i></button>
 
         <label> Введіть теги статті 'tag;tag'</label>
         <textarea class="form-control" name="tags" id="tags" placeholder="//" required></textarea><br>

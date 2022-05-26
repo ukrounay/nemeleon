@@ -45,13 +45,13 @@ function hideLoader() {
 
 isSidanavOpen = false;
 var prevScrollpos = window.pageYOffset;
-var nav = document.getElementById("nav-bg");
-
+var navbg = document.getElementById("nav-bg");
+var nav = document.getElementById("navigation-top");
 window.onscroll = function() {
 	if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
-		nav.classList.add("shadow");    
+		navbg.classList.add("shadow");    
 	} else {
-	    nav.classList.remove("shadow");
+	    navbg.classList.remove("shadow");
 	}
     try {
         var introHeight = document.getElementById('intro').clientHeight;
@@ -60,19 +60,18 @@ window.onscroll = function() {
         } else {
             navColorSpace.classList.add('darknav');
         }
-    } catch (e) {}
-    // if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-	//     var currentScrollPos = window.pageYOffset;
-	//     if (prevScrollpos > currentScrollPos) {
-	//         nav.style.top = "0";
-	//     } else {
-	//         nav.style.top = "-60px";
-	//     }
-	//     prevScrollpos = currentScrollPos;
-    // }
-	
-}
 
+    } catch (e) {}
+}
+// var currentScrollPos = window.pageYOffset;
+// if (prevScrollpos > currentScrollPos) {
+//     nav.style.top = "0";
+//     navbg.style.top = "0";
+// } else {
+//     nav.style.top = "-60px";
+//     navbg.style.top = "-60px";
+// }
+// prevScrollpos = currentScrollPos;
 
 var drop = document.getElementsByClassName("dropbox");
 var navlinkicon = document.querySelectorAll(".hover-drop .menulink i");

@@ -84,7 +84,7 @@ if (isset($_GET['text'])) {
         $tags = explode(";", $article['tags']);
         $theme = $article['theme'];
         echo "
-        <div class='article' onclick=\"location.href='article?articleid=".$article['id']."'\">
+        <div class='article'>
             <div class='text'>
                 <div class='breadcrumps'><p>
                     <a href='index'>Головна</a> 
@@ -114,7 +114,7 @@ if (isset($_GET['theme'])) {
         $tags = explode(";", $article['tags']);
         $theme = $article['theme'];
         echo "
-        <div class='article' onclick=\"location.href='article?articleid=".$article['id']."'\">
+        <div class='article'>
             <div class='text'>
                 <div class='breadcrumps'><p>
                     <a href='index'>Головна</a> 
@@ -128,7 +128,7 @@ if (isset($_GET['theme'])) {
         echo "
                 </div>
             </div>
-            <div class='image' onclick=\"location.href='article?articleid=".$article['id']."'\" style='background-image: ".$article['indeximg'].";'></div>
+            <div class='image' onclick=\"location.href='article?articleid=".$article['id']."'\" style='background-image: url(".$article['indeximg'].");'></div>
         </div>
         ";
     }
@@ -144,7 +144,7 @@ if (isset($_GET['tag'])) {
         $tags = explode(";", $article['tags']);
         $theme = $article['theme'];
         echo "
-        <div class='article' onclick=\"location.href='article?articleid=".$article['id']."'\">
+        <div class='article'>
             <div class='text'>
                 <div class='breadcrumps'><p>
                     <a href='index'>Головна</a> 
@@ -158,7 +158,7 @@ if (isset($_GET['tag'])) {
         echo "
                 </div>
             </div>
-            <div class='image' onclick=\"location.href='article?articleid=".$article['id']."'\" style='background-image: ".$article['indeximg'].";'></div>
+            <div class='image' onclick=\"location.href='article?articleid=".$article['id']."'\" style='background-image: url(".$article['indeximg'].");'></div>
         </div>
         ";
     }
