@@ -126,7 +126,7 @@
             <option value="Загальне" selected>Загальне</option>
             <option value="Політика">Політика</option>
             <option value="Технології">Технології</option>
-            <option value="Події">Події</option>
+            <option value="Розваги">Розваги</option>
             <option value="Блог">Блог</option>
         </select><br>
 

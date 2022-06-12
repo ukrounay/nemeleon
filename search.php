@@ -174,9 +174,9 @@ if (isset($_GET['tag'])) {
 <script>
     window.onscroll = function() {
         if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
-            document.getElementById('nav').classList.add("shadow");
+            document.getElementById('navigation-top').classList.add("shadow");
         } else {
-            document.getElementById('nav').classList.remove("shadow");
+            document.getElementById('navigation-top').classList.remove("shadow");
         }
     }
 

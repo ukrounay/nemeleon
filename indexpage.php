@@ -1,6 +1,6 @@
 <?php ?>
 <div id="site">
-<div id="nav-color-space" class="">
+<div id="nav-space" class="">
     <div id="nav-ph"></div>
     <div id="nav-bg"></div>
     <nav id="navigation-top">
@@ -43,6 +43,19 @@
             </div>
         </div>
 
+        <nav id="hovernav">
+            <form id="search-cont-cond" method="get" action="search">
+                <button type="submit" id="search-btn-cond"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="text" name="text" placeholder="шукати.." autocomplete="off" onfocus="searchCondFocus()" onblur="searchCondBlur()">
+                <button type="button" id="clear-btn-cond" onclick="searchClear()"><i class="fa-solid fa-xmark"></i></button>
+            </form>
+            <a class="menulink" href="javascript:void(0);">Допомогти</a>
+            <a class="menulink" href="javascript:void(0);">Підтримати</a>
+            <a class="menulink" href="javascript:void(0);">Про нас</a>
+            <a class="menulink accent-button" href="login">Зареєструватись</a>
+            <a class="menulink" href="login">Увійти</a>
+        </nav>
+
     </nav>
 
 </div>
@@ -64,17 +77,48 @@
         </div>
     </section>
 
+    <section id="themes">
+        <h1>Знайдіть тему собі до смаку</h1>
+        <div class="themes-grid">
+            <div class="theme" onclick="location.href='search?theme=Загальне'">
+                <i class="fa-solid fa-apple-whole"></i>
+                <a class="btn" href="search?theme=Загальне">Загальне</a>
+            </div>
+            <div class="theme" onclick="location.href='search?theme=Політика'">
+                <i class="fa-solid fa-people-group"></i>
+                <a class="btn" href="search?theme=Політика">Політика</a>
+            </div>
+            <div class="theme" onclick="location.href='search?theme=Технології'">
+                <i class="fa-solid fa-mobile-screen"></i>
+                <a class="btn" href="search?theme=Технології">Технології</a>
+            </div>
+            <div class="theme" onclick="location.href='search?theme=Розваги'">
+                <i class="fa-solid fa-gamepad"></i>
+                <a class="btn" href="search?theme=Розваги">Розваги</a>
+            </div>
+            <div class="theme" onclick="location.href='search?theme=Блог'">
+                <i class="fa-solid fa-heart"></i>
+                <a class="btn" href="search?theme=Блог">Блог</a>
+            </div>
+        </div>
+    </section>
+
     <section id="join">
-        <h1>Stolen from:</h1>
-        <a href="https://www.patreon.com/">patreon, intro from this</a><br>
-        <a href="https://medium.com/">medium, navbar color as here</a><br>
-        <div style="width: 100%; height: 100%; position: relative; z-index: 0; background-color: black; opacity: 0.6;"></div>
-        <h1>Приєднуйтесь до нашої спільноти</h1>
-        <p>Дізнавайтесь про новини сайту з багатьох інших джерел</p>
+        <div id="join-content">
+            <div id="jointext">
+                <h1>Приєднуйтесь до нашої спільноти!</h1>
+                <p>Дізнавайтесь про все найпершими</p>
+            </div>
+            <div id="joinform">
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+            </div>
+        </div>
+      
     </section>
 
     <section id="about">
-        <a href="article?articleid=2">article 3</a>
         <h2 id="1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend posuere ipsum sit amet egestas. Sed nisl neque, blandit et enim sollicitudin, ullamcorper faucibus ante. Nullam hendrerit ex eu tincidunt suscipit. Etiam aliquet eros mi, at posuere velit sagittis at. Cras vel dui enim. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras vel nisl eget est cursus iaculis non at nulla. Etiam non mauris ac enim tristique porttitor. Cras rhoncus nulla nunc, ut fermentum odio placerat ut. Donec auctor volutpat dolor, eu consectetur augue imperdiet eget. Aliquam ac velit purus. Praesent est est, lacinia vel maximus et, lacinia vel odio. Sed ipsum neque, fringilla at auctor id, ullamcorper vitae leo. Sed accumsan ultrices tortor ut luctus.</p>
             <p>Aenean ut enim mauris. Cras convallis faucibus purus at sagittis. Morbi nulla risus, ullamcorper id ligula at, gravida facilisis sem. Phasellus viverra ornare vulputate. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse malesuada elit sit amet lorem blandit, et ornare odio gravida. Etiam nisi risus, scelerisque et sapien ac, ultricies mollis tellus. Aliquam neque mauris, iaculis ac pretium non, sodales non augue. Vivamus eleifend eros velit, non faucibus ipsum malesuada quis.</p>

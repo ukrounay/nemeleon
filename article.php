@@ -121,9 +121,14 @@ try {
         $slide_urls_and_types = explode("|||", $article['urls']);
         foreach ($slide_urls_and_types as &$slide) {
             $value = explode("||", $slide);
-
+            if ($value[1]=="text") {
+                echo '<div class="article-page text">'.$value[0].'</div>';
+            }
             if ($value[1]=="img") {
                 echo '<img class="article-page img" src="'.$value[0].'" alt="'.$header.'">';
+            }
+            if ($value[1]=="video") {
+                echo '<video class="article-page video" src="'.$value[0].'"></video>';
             }
             if ($value[1]=="wiki") {
                 include('libs/simple_html_dom.php');

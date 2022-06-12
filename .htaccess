@@ -35,3 +35,5 @@ RewriteRule (.*) %1 [R=301,L]
 
 RewriteEngine On
 RewriteRule ^index.html$ / [QSA,R]
+
+Header always edit Set-Cookie ^(.*)$ "$1; HttpOnly; Secure; SameSite=lax"
