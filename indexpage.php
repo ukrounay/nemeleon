@@ -125,7 +125,7 @@
     </section>
 
     <section id="themes">
-        <h1>Знайдіть тему собі до смаку</h1>
+        <h1>Знайди тему собі до смаку</h1>
         <div class="themes-grid">
             <div class="theme" onclick="location.href='search?theme=Загальне'">
                 <i class="fa-solid fa-apple-whole"></i>
