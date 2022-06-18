@@ -1,22 +1,24 @@
-// var intro = document.getElementById('intro');
-// var docHeight = window.innerHeight;
-// var docWidth = window.innerWidth;
-// var absolute100 = docHeight + "px";
-// var introimg = document.querySelector("#introimg img");
-// introResize;
-// window.onresize = introResize;
-// function introResize() {
-//     docHeight = window.innerHeight;
-//     absolute100 = docHeight + "px";
-//     if () {
-        
-//     } else {
-        
-//     }
-//     if (introimg.clientHeight < docHeight) {
-//         intro.style.height = absolute100;
-//     } else {intro.style.height = 'auto';}
-// }
+/*
+
+try {
+            
+} catch (e) {console.log(e);}
+
+*/
+
+var hello = document.getElementById('hello');
+var docHeight = window.innerHeight;
+var docWidth = window.innerWidth;
+var absolute100 = docHeight + "px";
+var introimg = document.querySelector("#introimg img");
+window.onresize = helloResize;
+function helloResize() {
+try {
+    docHeight = window.innerHeight;
+    absolute100 = docHeight + "px";
+    hello.style.height = absolute100;
+} catch (e) {console.log(e)}
+}
 
 
 var loader = document.querySelector('.loader');
@@ -25,6 +27,14 @@ var loadlogo = document.querySelector('.loader svg');
 var i = 0;
 var navSpace = document.getElementById('nav-space');
 window.onload = function() {
+    helloResize();
+    try {
+        document.body.scrollTop = document.body.scrollTop - 60;
+        
+    } catch (e) {
+        console.log(e)
+        document.documentElement.scrollTop = document.documentElement.scrollTop - 60;
+    }
 	if (getCookie('theme') == "dark") { themeToggle('dark'); } else {
 	if (getCookie('theme') == "light") { themeToggle('light'); } else { themeToggle('auto'); }}
     loadlogo.style.animationIterationCount = "1";
@@ -35,7 +45,7 @@ window.onload = function() {
         document.getElementById('hoverbox').style.display = "none"; 
         try {
             navSpace.classList.add('darknav');
-            scrollFunction;
+            scrollFunction();
         } catch (e) {console.log(e);}
     }   
 }
@@ -64,8 +74,10 @@ function hideLoader() {
     setTimeout(function(){document.getElementById('hoverbox').setAttribute('style', 'background-color: var(--accent); left: 50%; width: 0px; height: 0px; top:50%; transform: rotate(180deg); border-radius:100%; opacity: 0.5'); navSpace.classList.add("darknav");}, 500);
 }
 
-
-
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
 
 isSidanavOpen = false;
 var prevScrollpos = window.pageYOffset;
@@ -73,21 +85,31 @@ var navbg = document.getElementById("nav-bg");
 var nav = document.getElementById("navigation-top");
 window.onscroll = scrollFunction;
 function scrollFunction() {
-	if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
-		navbg.classList.add("shadow");    
-	} else {
-	    navbg.classList.remove("shadow");
-	}
     try {
+        try {
+            if (document.body.scrollTop > docHeight - 100 || document.documentElement.scrollTop > docHeight - 100) {  
+                document.querySelector('#nav-space #nav-bg').style.top = "0";
+                document.querySelector('#nav-space #navigation-top').style.top = "0";
+            } else {
+                document.querySelector('#nav-space #nav-bg').style.top = "-60px";
+                document.querySelector('#nav-space #navigation-top').style.top = "-60px";
+            }
+        } catch (e) {console.log(e)}
         //
-        var introHeight = document.getElementById('intro').clientHeight;
+        if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
+            navbg.classList.add("shadow");    
+        } else {
+            navbg.classList.remove("shadow");
+        }
+        //
+        var introHeight = document.getElementById('intro').clientHeight + docHeight;
         if (document.body.scrollTop > introHeight || document.documentElement.scrollTop > introHeight) {
             navSpace.classList.remove('darknav');
         } else {
             navSpace.classList.add('darknav');
         }
         //
-        var themesHeight = introHeight + document.getElementById('themes').clientHeight;
+        var themesHeight = document.getElementById('themes').clientHeight + introHeight;
         if (document.body.scrollTop > themesHeight || document.documentElement.scrollTop > themesHeight) {
             navSpace.classList.remove('bluenav');
         } else {

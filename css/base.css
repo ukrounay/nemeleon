@@ -136,8 +136,7 @@ a {text-decoration: none;}
 ::-moz-selection {background-color: var(--accent); color: var(--main-bg-color);}
 ::selection {background-color: var(--accent); color: var(--main-bg-color);}
 
-.none-h {height: 0px !important; opacity: 0px !important; overflow: hidden;}
-.none-w {width: 0px !important; opacity: 0px !important; overflow: hidden;}
+.none, .none * {transition: 0s !important; height: 0px !important; width: 0px !important; opacity: 0px !important; overflow: hidden !important;}
 /* end all */
 
 
@@ -156,12 +155,13 @@ a {text-decoration: none;}
     height: 60px;
     z-index: 999;
     background-color: var(--main-bg-color);
+    transition: 0.2s;
 }
 .shadow {box-shadow: 0px 0px 2px var(--border-color);}
 .border {border: 1px solid var(--border-color);}
 .border-bottom {box-sizing: content-box !important; border-bottom: 1px solid var(--border-color);}
 #navigation-top {
-    transition: 0.2s; 
+    transition: 0.2s;
     position: fixed; 
     top: 0px; 
     width: 100%;
@@ -505,13 +505,131 @@ a {text-decoration: none;}
 .button.dark-btn {border-color: var(--accent) !important;}
 
 
+/* section.hello */
+#hello {
+    transition: none;
+    overflow: hidden;
+    background-color: var(--main-bg-color);
+}
+
+#hello h1 {
+    display: block;
+    position: absolute;
+    margin: 0px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--main-color);
+    font-size: 5vw;
+    z-index: 11;
+}
+@media screen and (max-width: 800px) {
+    #hello h1 {font-size: 10vw;}
+}
+.dot-wheel-container{
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    transform: translate(0%, -50%);
+    z-index: 10;
+}
+.dot-wheel-container.reverse{
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    transform: translate(-102%, -50%);
+    z-index: 10;
+}
+.wheel-dot {
+    display: block;
+    position: relative;
+    width: 10vw;
+    height: 10vw;
+    margin: 1vw;
+    border-radius: 100%;
+    transition: none;
+    background-color: var(--accent);
+    opacity: 0.3; 
+}
+.wheel-dot {animation: 2s linear 1s infinite running dot-slide;}
+.reverse .wheel-dot {animation: 2s linear 1s infinite running dot-slide reverse;}
+@keyframes dot-slide {0% {top: 0vw;} 100% {top: 11vw;}}
+@-webkit-keyframes dot-slide {0% {top: 0vw;} 100% {top: 11vw;}}
+@media screen and (max-width: 1000px) {
+    .wheel-dot {
+        width: 20vw;
+        height: 20vw;
+        margin: 2vw;
+    }
+    @keyframes dot-slide {0% {top: 0vw;} 100% {top: 22vw;}}
+    @-webkit-keyframes dot-slide {0% {top: 0vw;} 100% {top: 22vw;}}
+}
+@media screen and (max-width: 600px) {
+    .wheel-dot {
+        width: 30vw;
+        height: 30vw;
+        margin: 3vw;
+    }
+    @keyframes dot-slide {0% {top: 0vw;} 100% {top: 33vw;}}
+    @-webkit-keyframes dot-slide {0% {top: 0vw;} 100% {top: 33vw;}}
+}
+.swipe-act {
+    display: inline-block;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    color: var(--main-color);
+    text-align: center;
+    z-index: 12;
+    cursor: pointer;
+}
+.swipe-act:hover {transform: translate(-50%, 3px);}
+.swipe-act p {font-size: large; margin: 0px 10px;}
+.swipe-act i {font-size: 260%; margin-bottom: 0.5em;}
+
+.hello-logo {
+    position: absolute;
+    height: 80%;
+    left: 50%;
+    top: 50%;
+    transform: translate(5%,-60%);
+    animation: 10s slideup infinite;
+}
+.hello-logo svg {
+    height: 100%;
+    opacity: 0.3;
+}
+@keyframes slideup {
+    0% {transform: translate(5%, -60%);}
+    50% {transform: translate(5%, -50%);}
+    100% {transform: translate(5%, -60%);}
+}
+@-webkit-keyframes slideup {
+    0% {transform: translate(5%, -60%);}
+    50% {transform: translate(5%, -50%);}
+    100% {transform: translate(5%, -60%);}
+}
+@media screen and (max-width: 1000px) {
+    @keyframes slideup {
+        0% {transform: translate(0%, -50%);}
+        50% {transform: translate(0%, -30%);}
+        100% {transform: translate(0%, -50%);}
+    }
+    @-webkit-keyframes slideup {
+        0% {transform: translate(0%, -50%);}
+        50% {transform: translate(0%, -30%);}
+        100% {transform: translate(0%, -50%);}
+    }
+}
+/* section.hello */
+
 
 /* section.intro */
 
-#intro {
-    background-color: #202020;
-    
-}
+#intro {background-color: #202020;}
 #intro-content {
     max-width: 1100px;
     margin: auto;
@@ -666,7 +784,7 @@ a {text-decoration: none;}
     .hide3 {display: none !important;}
 }
 @media screen and (max-width: 400px) {
-    #navigation-top, #nav-cont, #linkbox, #nav-bg, #nav-ph {height: 40px;}
+    #navigation-top, #nav-cont, #linkbox, #nav-bg, #nav-ph {height: 40px !important;}
     #logo {height: 30px; margin: 5px;}
     #theme-btn {display: none;}
     #menu-btn {margin: 0px; padding: 12px; border-radius: 0px;}
