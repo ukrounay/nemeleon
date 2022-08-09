@@ -6,10 +6,12 @@
         $article = R::dispense('articles');
         $article->header = $data['header'];
         $article->indeximg = $data['indeximg'];
-        
+        foreach ($_POST['subhead'] as $row) { $subheads[] = $row; }
         foreach ($_POST['url'] as $row) { $urls[] = $row; }
         foreach ($_POST['type'] as $row) { $types[] = $row; }
+        
         for ($i = 0; $i < count($urls); $i++) {
+            $pieces[] = $subheads[$i];
             $pieces[] = $urls[$i];
             $pieces[] = $types[$i];
             $urls[$i] = implode('||', $pieces);
@@ -57,7 +59,7 @@
         padding: 10px; 
         height: 40px;
     }
-    select {margin-bottom: 10px; padding: 10px; line-height: 1.0;}
+    select {padding: 10px; line-height: 1.0;}
     button {
         margin: 10px 5px 10px 0px; 
         padding: 10px; 
@@ -87,42 +89,59 @@
     .quote.good {background-color: #10aaaa50; }
     .quote p {line-height: 1.0; margin: 0px;}
     .link {display: grid; grid-template-columns: 1fr auto; gap: 10px;}
+    #add-btn {margin: 0px;}
+    table {border-collapse: collapse;}
+    td, th {padding: 0px;}
+    table .form-control {display: inline-block; margin-right: 5px;}
 </style>
 <meta name="theme-color" content="#202020">
 <body>
 <section>
-    <div class="quote good">
+    <!-- <div class="quote good">
         <p>Перед вставлянням тексту треба обовязково збільшити розмір текстового поля, бо при переповненні чомусь можливість змінити розмір пропадає.</p>
         <i class="fa-solid fa-xmark" onclick="quoteHide(0)"></i>
-    </div>
+    </div> -->
     <h2>Додавання статей</h2>
     <form action="add" method="post">
 
-        <label> Введіть заголовок статті</label>
-        <input type="text" class="form-control" name="header" id="name" placeholder="//" required><br>
+        <label>Введіть заголовок статті</label>
+        <input autofocus type="text" class="form-control" name="header" id="name" placeholder="//" required maxlength="60"><br>
+
+        <label>Введіть анотацію/передмову/підводку для статті</label>
+        <input type="text" class="form-control" name="prescript" id="prescript" placeholder="//"><br>
+
 
         <label>Вкажіть посилання на картинку статті</label>
-        <textarea class="form-control" name="indeximg" id="indeximg" placeholder="//" required></textarea><br>
+        <textarea class="form-control" name="indeximg" id="indeximg" placeholder="//"></textarea><br>
 
-        <label> Введіть посилання та його тип. По мірі додавання контенту я буду писати парсери для інших сайтів та типів даних.</label>
-        <!-- <textarea class="form-control" name="urls" placeholder="//" required></textarea> -->
-        <div class="link">
-            <textarea class="form-control" name="url[0]" placeholder="//" required></textarea>
-            <select name="type[0]" class="form-control" required>
-                <option value="text">текст/html</option>
-                <option value="img">картинка</option>
-                <option value="video">відео</option>
-                <option value="wiki">вікіпедія</option>
-                <option value="tweet">віджет твіта</option>
-            </select>
-        </div>
+        <label>Заповніть таблицю, щоб додати на сторінку контент. По мірі додавання контенту в майбутньому я буду писати парсери для конкретних сайтів та скрипти для відображення різноманітних типів даних.</label>
+        <table id="content-table">
+            <thead>
+                <th>Заголовок розділу</th>
+                <th>Контент розділу</th>
+                <th>Тип контенту</th>
+            </thead>
+            <tr>
+                <td><textarea class="form-control" name="subhead[0]" placeholder="//"></textarea></td>
+                <td><textarea class="form-control" name="url[0]" placeholder="//"></textarea></td>
+                <td>
+                    <select name="type[0]" class="form-control">
+                        <option value="text">текст/html</option>
+                        <option value="img">картинка</option>
+                        <option value="video">відео</option>
+                        <option value="wiki">вікіпедія</option>
+                        <option value="tweet">віджет твіта</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
         <button onclick="addBefore()" type="button" id="add-btn"><i class="fa-solid fa-plus"></i></button>
 
-        <label> Введіть теги статті 'tag;tag'</label>
-        <textarea class="form-control" name="tags" id="tags" placeholder="//" required></textarea><br>
+        <label> Введіть теги статті через крапку з комою (tag;tag)</label>
+        <textarea class="form-control" name="tags" id="tags" placeholder="//"></textarea><br>
 
         <label>Виберіть тематику статті</label>
-        <select class="form-control" name="theme" id="theme">
+        <select class="form-control" name="theme" id="theme" required>
             <option value="Загальне" selected>Загальне</option>
             <option value="Політика">Політика</option>
             <option value="Технології">Технології</option>
@@ -141,12 +160,9 @@
 <script>
     function quoteHide(num) {document.getElementsByClassName("quote")[num].style.display = 'none';}
     function addBefore(){
-        var linkCont = document.createElement("div");
-        linkCont.classList.add('link');
-        linkCont.innerHTML = '<textarea class="form-control" name="url[]" placeholder="//" required></textarea><select name="type[]" class="form-control" required><option value="img">img</option><option value="wiki">wiki</option><option value="tweet">tweet</option></select>'
-        var addBtn = document.getElementById("add-btn");
-        var parentDiv = addBtn.parentNode;
-        parentDiv.insertBefore(linkCont, addBtn);
+        var tr = document.createElement("tr");
+        tr.innerHTML = '<td><textarea class="form-control" name="subhead[0]" placeholder="//" required></textarea></td><td><textarea class="form-control" name="url[0]" placeholder="//" required></textarea></td><td><select name="type[0]" class="form-control" required><option value="text">текст/html</option><option value="img">картинка</option><option value="video">відео</option><option value="wiki">вікіпедія</option><option value="tweet">віджет твіта</option></select></td>';
+        document.getElementById('content-table').appendChild(tr);
     }
 </script>
 </body>

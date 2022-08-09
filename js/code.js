@@ -1,145 +1,8 @@
-/*
-
-try {
-            
-} catch (e) {console.log(e);}
-
-*/
-
-var hello = document.getElementById('hello');
-var docHeight = window.innerHeight;
-var docWidth = window.innerWidth;
-var absolute100 = docHeight + "px";
-var introimg = document.querySelector("#introimg img");
-window.onresize = helloResize;
-function helloResize() {
-try {
-    docHeight = window.innerHeight;
-    absolute100 = docHeight + "px";
-    hello.style.height = absolute100;
-} catch (e) {console.log(e)}
-}
-
-
-var loader = document.querySelector('.loader');
-var loadlogopath = document.querySelectorAll('.loadlogo')[0];
-var loadlogo = document.querySelector('.loader svg');
-var i = 0;
-var navSpace = document.getElementById('nav-space');
-window.onload = function() {
-    helloResize();
-    try {
-        document.body.scrollTop = document.body.scrollTop - 60;
-        
-    } catch (e) {
-        console.log(e)
-        document.documentElement.scrollTop = document.documentElement.scrollTop - 60;
-    }
-	if (getCookie('theme') == "dark") { themeToggle('dark'); } else {
-	if (getCookie('theme') == "light") { themeToggle('light'); } else { themeToggle('auto'); }}
-    loadlogo.style.animationIterationCount = "1";
-    if (getCookie('first') != "false") {
-        setTimeout(sayHello, 2000);    
-        document.cookie = "first=false; secure"
-    } else {
-        document.getElementById('hoverbox').style.display = "none"; 
-        try {
-            navSpace.classList.add('darknav');
-            scrollFunction();
-        } catch (e) {console.log(e);}
-    }   
-}
-
-function sayHello() {
-    
-    loadlogopath.setAttribute('style', 'fill: var(--accent)');
-    loadlogo.setAttribute('style', '');
-    loader.style.height = "200px";
-    setTimeout(writeHello, 1000);
-    setTimeout(hideLoader, 2500);
-    
-}
-
-function writeHello() {
-    var txt = 'привіт';
-    if (i < txt.length) {
-        document.getElementById("hellotext").innerHTML += txt.charAt(i);
-        i++;
-        setTimeout(writeHello, 150);
-    }
-}
-
-function hideLoader() {
-    loader.style.opacity = '0.0';
-    setTimeout(function(){document.getElementById('hoverbox').setAttribute('style', 'background-color: var(--accent); left: 50%; width: 0px; height: 0px; top:50%; transform: rotate(180deg); border-radius:100%; opacity: 0.5'); navSpace.classList.add("darknav");}, 500);
-}
-
-function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-}
-
-isSidanavOpen = false;
-var prevScrollpos = window.pageYOffset;
-var navbg = document.getElementById("nav-bg");
-var nav = document.getElementById("navigation-top");
-window.onscroll = scrollFunction;
-function scrollFunction() {
-    try {
-        try {
-            if (document.body.scrollTop > docHeight - 100 || document.documentElement.scrollTop > docHeight - 100) {  
-                document.querySelector('#nav-space #nav-bg').style.top = "0";
-                document.querySelector('#nav-space #navigation-top').style.top = "0";
-            } else {
-                document.querySelector('#nav-space #nav-bg').style.top = "-60px";
-                document.querySelector('#nav-space #navigation-top').style.top = "-60px";
-            }
-        } catch (e) {console.log(e)}
-        //
-        if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
-            navbg.classList.add("shadow");    
-        } else {
-            navbg.classList.remove("shadow");
-        }
-        //
-        var introHeight = document.getElementById('intro').clientHeight + docHeight;
-        if (document.body.scrollTop > introHeight || document.documentElement.scrollTop > introHeight) {
-            navSpace.classList.remove('darknav');
-        } else {
-            navSpace.classList.add('darknav');
-        }
-        //
-        var themesHeight = document.getElementById('themes').clientHeight + introHeight;
-        if (document.body.scrollTop > themesHeight || document.documentElement.scrollTop > themesHeight) {
-            navSpace.classList.remove('bluenav');
-        } else {
-            navSpace.classList.add('bluenav');
-        }
-        //
-    } catch (e) {}
-}
-// var currentScrollPos = window.pageYOffset;
-// if (prevScrollpos > currentScrollPos) {
-//     nav.style.top = "0";
-//     navbg.style.top = "0";
-// } else {
-//     nav.style.top = "-60px";
-//     navbg.style.top = "-60px";
-// }
-// prevScrollpos = currentScrollPos;
-
-var drop = document.getElementsByClassName("dropbox");
-var navlinkicon = document.querySelectorAll(".hover-drop .menulink i");
-function dropboxShow(num) { drop[num].style.display = "block"; navlinkicon[num].setAttribute('style', 'transform: rotate(180deg);')}
-function dropboxHide(num) { drop[num].style.display = "none"; navlinkicon[num].setAttribute('style', '')}
-
-function topFunction() {
-	document.body.scrollTop = "0px";
-	document.documentElement.scrollTop = "0px";
-}
-
-
 var themebtn = document.getElementById('theme-btn');
+
+if (getCookie('theme') == "dark") { themeToggle('dark'); } else {
+if (getCookie('theme') == "light") { themeToggle('light'); } else { themeToggle('auto'); }}
+
 function themeToggle(theme) {
 
 	document.body.classList = theme;
@@ -162,7 +25,90 @@ function themeToggle(theme) {
     }
 }
 
+var docHeight = document.documentElement.clientHeight;
+var docWidth = document.documentElement.clientWidth;
+var absolute100 = docHeight + "px";
+var introimg = document.querySelector("#introimg img");
+var loader = document.querySelector('.loader');
+var loadlogopath = document.querySelectorAll('.loadlogo')[0];
+var loadlogo = document.querySelector('.loader svg');
+var i = 0;
+var navSpace = document.getElementById('nav-space');
+window.onload = function() {
+    loadlogo.style.animationIterationCount = "1";
+    if (getCookie('first') != "false") {
+        setTimeout(sayHello, 2000);    
+        document.cookie = "first=false; secure"
+    } else {
+        try {
+            navSpace.classList.add('darknav');
+            scrollFunction();
+        } catch (e) {console.log(e);}
+        document.getElementById('hoverbox').style.opacity = "0"; 
+        setTimeout(function(){
+            document.getElementById('hoverbox').style.display = "none"; 
+        }, 700);
+    }   
+}
 
+function sayHello() {
+    loadlogopath.setAttribute('style', 'fill: var(--accent)');
+    loadlogo.setAttribute('style', '');
+    loader.style.height = "200px";
+    setTimeout(writeHello, 1000);
+    setTimeout(hideLoader, 2500);
+}
+
+function writeHello() {
+    var txt = 'привіт';
+    if (i < txt.length) {
+        document.getElementById("hellotext").innerHTML += txt.charAt(i);
+        i++;
+        setTimeout(writeHello, 150);
+    }
+}
+
+function hideLoader() {
+    loader.style.opacity = '0.0';
+    setTimeout(function(){
+        try {
+            navSpace.classList.add('darknav');
+            scrollFunction();
+        } catch (e) {console.log(e);}
+        document.getElementById('hoverbox').setAttribute('style', 'background-color: var(--accent); left: 50%; width: 0px;  opacity: 0'); 
+    }, 500);
+}
+
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+
+isSidanavOpen = false;
+var prevScrollpos = window.pageYOffset;
+var navbg = document.getElementById("nav-bg");
+var nav = document.getElementById("navigation-top");
+// window.onscroll = scrollFunction;
+// function scrollFunction() {
+//     try {
+//         if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
+//             navbg.classList.add("shadow");   
+//         } else {
+//             navbg.classList.remove("shadow");
+//         }
+//     } catch (e) {}
+// }
+
+
+var drop = document.getElementsByClassName("dropbox");
+var navlinkicon = document.querySelectorAll(".hover-drop .menulink i");
+function dropboxShow(num) { drop[num].style.display = "block"; navlinkicon[num].setAttribute('style', 'transform: rotate(180deg);')}
+function dropboxHide(num) { drop[num].style.display = "none"; navlinkicon[num].setAttribute('style', '')}
+
+function toTop() {
+	document.body.scrollTop = "0px";
+	document.documentElement.scrollTop = "0px";
+}
 
 function getCookie(cname) {
     var name = cname + "=";
@@ -180,38 +126,6 @@ function getCookie(cname) {
     return "";
 }
 
-var article = document.querySelector("#article");
-var dotCont = document.querySelector("#dot-cont");
-var pages = document.getElementsByClassName("article-page");
-
-var curPage = 0;
-
-for (let i = 0; i < pages.length; i++) {
-    var dot = document.createElement('i');
-    dot.classList = "fa-solid fa-circle dot";
-    let goto = 'goToPage(' + i + ')';
-    dot.setAttribute('onclick', goto); 
-    dotCont.appendChild(dot);
-}
-
-var dots = document.getElementsByClassName("dot");
-
-function goToPage(pagenum) {
-    try {
-        for (let i = 0; i < pages.length; i++) {
-            let cdot = dots[i];
-            let page = pages[i];
-            if (i < pagenum) {page.classList.add('watched');}
-            if (i > pagenum) {page.classList.add('unwatched');}
-            if (i == pagenum) {cdot.classList = "fa-solid fa-circle dot";};
-            if (i != pagenum) {cdot.classList = "fa-solid fa-circle-dot dot";};
-        }
-        pages[pagenum].classList.add('current');
-    } catch (e) {
-        console.log(e);
-    }
-}
-goToPage(0);
 var searchContCond = document.getElementById('search-cont-cond');
 function searchCondFocus() { 
     searchContCond.style.borderColor = 'var(--accent)'; 
@@ -224,16 +138,23 @@ function searchClear() {
     searchInput.value = "";
 }
 
-
+var menuBtn = document.getElementById("menu-btn");
 var hovernav = document.getElementById("hovernav");
-var hovernavVisible = false;
-var bar = document.getElementsByClassName("bar");
-try {
-    hovernav.setAttribute('onmouseover', barsWiggleOn);
-    hovernav.setAttribute('onmouseleave', barsWiggleOff);
-    hovernav.setAttribute('onclick', hoverNavToggle);
-} catch (e) {console.log(e);}
+var hovertoggled = false;
+var bars = document.getElementsByClassName("bar");
 
-function barsWiggleOn() {
-    bar[0,1].width = '24px';
+function hoverNavToggle() {
+    if (hovertoggled) {
+        hovertoggled = false;
+        menuBtn.classList.remove('cross');
+        navbg.setAttribute("style", "");
+        nav.setAttribute("style", "");
+        document.body.style.overflow = "scroll";
+    } else {
+        hovertoggled = true;
+        menuBtn.classList.add('cross');
+        navbg.setAttribute("style", "height: 100%;;");
+        nav.setAttribute("style", "height: 100%; grid-template-rows: auto 1fr");
+        document.body.style.overflow = "hidden";
+    }
 }
