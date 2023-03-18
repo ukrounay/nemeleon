@@ -1,0 +1,193 @@
+/****************
+ /)/)
+(0 - 0)
+( < <)
+
+nemeleon.com
+code by ukrounay (rnemaoh)   
+
+°˖✧◝(⁰▿⁰)◜✧˖° 
+****************/
+
+body {background-color: var(--light-blue);}
+
+.article-container {
+    max-width: var(--max-width);
+    margin: auto;
+    display: grid;
+    grid-template-columns: var(--right-side-menu);
+    padding: 0 20px 20px;
+    gap: 20px;
+}
+
+.article-container h1 {
+    font-family: var(--article-header-font);
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.article-container h2 {
+    font-family: var(--article-header-font);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+}
+
+.article-container h3 {
+    font-family: var(--content-font);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0 0 1rem;
+}
+
+.article-content, .aside-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+article, .aside-menu section, #header-image  {
+    background-color: var(--white);
+    border-radius: 20px;
+    box-shadow: var(--light-shadow);
+}
+
+article {
+    font-family: var(--article-font);
+}
+
+#header-image {    
+    overflow: hidden;
+    box-shadow: var(--mid-shadow);
+}
+
+
+
+/* side menu */
+
+.aside-menu {
+    position: sticky;
+    top: 20px;
+    bottom: 20px;
+}
+.aside-menu section {padding: 20px;}
+.aside-menu section p {margin: 0;}
+#recomendation {
+    display: flex; 
+    flex-direction: column; gap: 20px;
+}
+#recomendation a {
+    display: block;
+    padding: 0.5rem;
+    border-top: 1px solid var(--gray);
+}
+#recomendation a:hover {background-color: var(--light-gray);}
+#recomendation .ratio {overflow: hidden;}
+.related-article {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--gray);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.share-btn {
+    display: inline-flex;
+    padding: 8px 12px;
+    border-radius: 30px;
+    align-items: center;
+    border: 1px solid var(--gray);
+}
+.share-btn:hover {background-color: var(--light-gray);}
+.share-btn span {padding: 0 6px 2px;}
+.share-btn:not(:last-of-type) {margin-bottom: 12px;}
+
+
+/* header */
+
+article header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 30px;
+}
+
+article header p {margin: 0;}
+
+#breadcrumps {
+    display: flex;
+    gap: 0.5rem;
+}
+#breadcrumps i {
+    display: inline-flex;
+    font-size: 0.8rem;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tag {
+    display: inline-block;
+    padding: 8px 16px 9px;
+    margin-right: 3px;
+    border-radius: 20px;
+    background-color: var(--light-blue);
+    outline: 1px solid transparent;
+}
+.tag:hover {
+    background-color: var(--tag-bg-color);
+    outline-color: var(--tag-color);
+}
+.tag::before {
+    content: "#";
+}
+
+
+/* light switch */
+
+.light-switch-container {
+    position: relative;
+    margin-left: calc(45px + 1rem);
+}
+
+#light-switch {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    height: 1rem;
+    width: 1rem;
+    border-radius: 100%;
+    background-color: var(--dark);
+}
+
+#light-switch::before {
+    transition: 0.3s;
+    content: "";
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    height: 0;
+    width: 0;
+    border-radius: 100%;
+    background-color: var(--light-blue);
+}
+
+#light-switch.moon::before {
+    height: 80%;
+    width: 80%;
+}
+
+
+/* content styling */
+
+.youtube-video iframe {
+    border-radius: 4px;
+}
+
+article section {
+    border-top: 1px solid var(--gray);
+    padding: 30px;
+}
+
+article section p {line-height: 1.6; margin-bottom: 0;}
