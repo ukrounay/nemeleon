@@ -1,0 +1,207 @@
+/* styles for posts */
+
+.post {
+    margin: 0 0 var(--p-cont);
+    border-radius: 0 var(--br-outer) var(--br-outer);
+    /* background-color: var(--cl-bg-primary); */
+    overflow: hidden;
+}
+
+.post-content-outer {
+    position: relative;
+    background-color: var(--cl-bg-primary);
+    display: flex;
+    flex-direction: row-reverse;
+    padding: var(--p);
+    border-radius: var(--br-outer) 0 0;
+}
+.post-content-inner {
+    background-color: var(--cl-bg-primary);
+    padding-top: var(--p);
+    border-radius: var(--br-l) 0 0;
+}
+.post-content-outer::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 100%;
+    height: var(--br-l);
+    width: var(--br-l);
+    background: var(--cl-bg-primary);
+    mask-image: url("images/rounded-angle.svg#round-angle");
+
+}
+.author-bar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--br);
+}
+.author {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: var(--p-s);
+    padding: 0 var(--p-s) var(--p) 0;
+}
+
+.author-pfp {
+    height: 3rem;
+}
+.author-pfp svg {
+    height: 100%;
+}
+
+.author-pfp svg .cls-1{fill: var(--cl-bg-containers);}
+.author-pfp svg .cls-2{fill: var(--cl-accent-light);}
+.author-pfp svg .cls-3{fill: var(--cl-accent-dark);}
+
+.author-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    
+}
+.user-name {
+    font-weight: 700;
+    color: var(--cl-accent-dark)
+}
+.user-alias {
+    color: var(--cl-fg-secondary);
+}
+.author-bar .date {
+    background-color: var(--cl-bg-body);
+    color: var(--cl-fg-secondary);
+    padding: var(--p-s);
+    border-radius: var(--br);
+}
+.author-bar .date i {
+    color: var(--cl-accent-mid-dark);
+}
+.author-bar .date i::before {margin: 0;}
+
+.tags {
+    padding: 0 var(--p) var(--p);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--p-s);
+}
+.tag::before {content: "#";}
+.tag {
+    border-radius: var(--br);
+    padding: var(--p-s) var(--p);
+    background-color: var(--cl-bg-body);
+}
+
+.post-content {
+    background-color: var(--cl-bg-body);
+    border-radius: var(--br);
+    margin: 0 var(--p);
+    padding-top: var(--p);
+}
+.post h3 {
+    font-size: 1.4rem;
+    margin: 0 var(--p) var(--p);
+}
+.post-content p {
+    line-height: 1.6;
+    margin: 0 var(--p) var(--p);
+    font-size: 1.1rem;
+}
+
+.post-content p:last-child {
+    padding-bottom: var(--p);
+    margin-bottom: 0;
+}
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    padding: var(--p);
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--p-s);
+}
+
+.rating {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--cl-bg-body);
+    border-radius: var(--br);
+    overflow: hidden;
+}
+
+.rating i {cursor: pointer;}
+
+.rating i::before {
+    margin: 0;
+}
+
+.rating .ni-angle-up {
+    color: var(--cl-fg-good);
+    padding: var(--p-s) var(--p);
+    border-radius: var(--br);
+}
+.rating .ni-angle-up:hover {
+    background-color: var(--cl-fg-good);
+    color: var(--cl-bg-body);
+}
+
+.rating .ni-angle-down {
+    color: var(--cl-fg-bad);
+    padding: var(--p-s) var(--p);
+    border-radius: var(--br);
+}
+.rating .ni-angle-down:hover {
+    background-color: var(--cl-fg-bad);
+    color: var(--cl-bg-body);
+}
+
+.rate {
+    position: relative;
+    padding: var(--p-s);
+}
+
+/* .rate::before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: 0;
+    width: var(--br);
+    height: 100%;
+    background-color: var(--cl-bg-body);
+    border-radius: var(--br) 0 0 var(--br);
+}
+
+.rate::after {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: 0;
+    width: var(--br);
+    height: 100%;
+    background-color: var(--cl-bg-body);
+    border-radius: 0 var(--br) var(--br) 0;
+} */
+
+.toolbar .actions {
+    display: flex;
+    gap: var(--p-s);
+    flex-wrap: wrap;
+}
+
+.action {
+    background-color: var(--cl-bg-body);
+    color: var(--cl-accent-dark);
+    cursor: pointer;
+    border-radius: var(--br);
+    padding: var(--p-s);
+    flex-wrap: nowrap;
+}
+
+.action:hover {
+    background-color: var(--cl-accent-light);
+}
+.action i {display: inline-block; width: 1rem;}
+.action i::before {margin: 0;}

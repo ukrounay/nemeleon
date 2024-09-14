@@ -1,0 +1,20 @@
+@font-face {
+    font-family: "Rethink Sans";
+    src: url("fonts/rethink_sans/fonts/variable/RethinkSans[wght].ttf");
+    font-weight: 100 1000;
+}
+
+@font-face {
+    font-family: Bion;
+    src: url(fonts/bion/Bion-Book.ttf);
+    font-weight: normal;
+}
+@font-face {
+    font-family: Bion;
+    src: url(fonts/bion/Bion-Bold.otf);
+    font-weight: bold;
+}
+
+body {
+    font-family: "Rethink Sans", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

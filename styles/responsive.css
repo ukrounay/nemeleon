@@ -1,0 +1,22 @@
+@media screen and (max-width: 1200px) {
+    .side-content {display: none;}
+}
+
+@media screen and (max-width: 900px) {
+    .side-menu-container,
+    .bg-shape {display: none;}
+    .content-container {padding: 0 var(--p-l) !important;}
+    .content-container::-webkit-scrollbar-track { margin: var(--h-top-nav-bar) 0 var(--h-bottom-nav-bar);}
+    .top-nav-bar {display: flex !important;}
+    .bottom-nav-bar {display: grid !important;}
+    .anchor.top {height: var(--h-top-nav-bar);}
+    .anchor.bottom {height: var(--h-bottom-nav-bar);}
+    header, .post {margin: 0 0 var(--p-l);}
+    .slider-content {padding-top: 75% !important;}
+}
+
+@media screen and (max-width: 600px) {
+    .author-bar {display: block;}
+    .post-content-outer {border-radius: var(--br-l) var(--br-l) 0 0; flex-direction: row;}
+    .post-content-inner {border-radius: 0 0 var(--br-l) var(--br-l); padding-top: 0;}
+}
