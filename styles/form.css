@@ -1,0 +1,98 @@
+.standard-form {
+    background-color: var(--cl-bg-containers );
+    padding: var(--p-cont);
+    border-radius: var(--br-cont);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: var(--p-cont);
+    width: 100%;
+    max-width: var(--w-thin-content-max);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--p-l);
+}
+.standard-form h1 {
+    color: var(--cl-accent-dark);
+    font-size: 2.6rem;
+}
+.standard-form p {
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+.standard-form input, 
+.standard-form textarea,
+.standard-form select {
+    cursor: text;
+    font: inherit;
+    font-size: 1.2rem;
+    font-variation-settings: "wght" 700;
+    text-wrap: nowrap;
+    border: none;
+    outline: none !important;
+    color: var(--cl-accent-dark);
+    background: transparent;
+}
+.standard-form .button {
+    border: none;
+    font: inherit;
+    font-size: 1.2rem;
+    font-variation-settings: "wght" 700;
+    align-items: center;
+    justify-content: center;
+}
+.standard-form .input-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--p-s);
+    align-items: flex-start;
+}
+.standard-form .input-container label {
+    background-color: var(--cl-bg-secondary);
+    display: inline-block;
+    padding: var(--p-s) var(--p);
+    border-radius: var(--br) var(--br) var(--br-s) var(--br-s);
+}
+
+.standard-form .input-container input, 
+.standard-form .input-container textarea, 
+.standard-form .input-container select {
+    background-color: var(--cl-bg-primary);
+    display: inline-block;
+    width: 100%;
+    padding: var(--p);
+    border-radius: var(--br-s) var(--br) var(--br);
+}
+
+.standard-form .button-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--p-s);
+}
+
+.standard-form .button-container .button:nth-of-type(2n+1) {
+    border-radius: var(--br-cont) var(--br) var(--br) var(--br-cont);
+}
+
+.standard-form .button-container .button:nth-of-type(2n+2) {
+    border-radius: var(--br) var(--br-cont) var(--br-cont) var(--br);
+}
+
+
+@media screen and (max-width: 500px) {
+    .standard-form {
+        background-color: transparent;
+        overflow: visible;
+        border-radius: 0;
+        padding: var(--p-l) 0;
+    }
+    .standard-form .button-container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--p-s);
+    }
+    .standard-form .button-container .button {border-radius: var(--br-cont) !important;}
+    .standard-form h1 {
+        font-size: 2rem;
+    }
+}

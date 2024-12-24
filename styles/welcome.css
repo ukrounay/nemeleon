@@ -1,0 +1,35 @@
+.welcome {
+    background-color: var(--cl-bg-containers );
+    padding: var(--p-cont);
+    border-radius: var(--br-cont);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: var(--p-cont);
+    width: 100%;
+}
+.welcome .header-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--p-l);
+    z-index: 2;
+}
+.welcome h1 {
+    color: var(--cl-accent-dark);
+    font-size: 2.6rem;
+}
+.welcome p {
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+.bg-shape {
+    position: absolute;
+    top: 20%;
+    right: 0%;
+    height: 140%;
+    transform: translateX(10%);
+}
+
+.bg-shape path {
+    fill: var(--cl-accent);
+}

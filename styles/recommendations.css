@@ -1,0 +1,33 @@
+/* styles for posts recommending */
+.recommendations {
+    width: 100%;
+}
+#recommendations {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: var(--p);
+    margin-bottom: var(--p-cont);
+    position: sticky;
+    top: calc(var(--p-cont) * 2);
+}
+.recommendation {
+    background-color: var(--cl-bg-secondary);
+    padding: var(--p);
+    border-radius: var(--br-outer);
+    display: flex;
+    flex-direction: column;
+    gap: var(--p-s);
+}
+.recommendation span.author {
+    display: inline-block;
+    margin: 0 var(--p-s);
+    text-wrap: nowrap;
+}
+.recommendation .button-slim {
+    font-weight: bold;
+    display: inline-flex;
+    gap: var(--p-s);
+}
+.recommendation .button-slim:hover i {
+    transform: translateX(30%);
+}

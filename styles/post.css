@@ -1,37 +1,7 @@
-/* styles for posts */
-
 .post {
-    margin: 0 0 var(--p-cont);
-    border-radius: 0 var(--br-outer) var(--br-outer);
-    /* background-color: var(--cl-bg-primary); */
-    overflow: hidden;
+    margin: var(--p) 0;
 }
 
-.post-content-outer {
-    position: relative;
-    background-color: var(--cl-bg-primary);
-    display: flex;
-    flex-direction: row-reverse;
-    padding: var(--p);
-    border-radius: var(--br-outer) 0 0;
-}
-.post-content-inner {
-    background-color: var(--cl-bg-primary);
-    padding-top: var(--p);
-    border-radius: var(--br-l) 0 0;
-}
-.post-content-outer::before {
-    content: "";
-    display: block;
-    position: absolute;
-    bottom: 0;
-    right: 100%;
-    height: var(--br-l);
-    width: var(--br-l);
-    background: var(--cl-bg-primary);
-    mask-image: url("images/rounded-angle.svg#round-angle");
-
-}
 .author-bar {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -44,146 +14,216 @@
     gap: var(--p-s);
     padding: 0 var(--p-s) var(--p) 0;
 }
-
-.author-pfp {
+.author-icon {
+    position: relative;
+}
+.community-avatar {
+    display: inline-block;
+    position: relative;
     height: 3rem;
+    width: 3rem;
+    border-radius: 100%;
+    margin-right: -1.5rem;
 }
-.author-pfp svg {
-    height: 100%;
+.author-pfp {
+    display: inline-block;
+    position: relative;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 100%;
+    z-index: 2;
+    background-size: cover;
 }
-
-.author-pfp svg .cls-1{fill: var(--cl-bg-containers);}
-.author-pfp svg .cls-2{fill: var(--cl-accent-light);}
-.author-pfp svg .cls-3{fill: var(--cl-accent-dark);}
-
 .author-text {
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
-    
+}
+.author-text a {
+    text-decoration: none;
 }
 .user-name {
     font-weight: 700;
     color: var(--cl-accent-dark)
 }
-.user-alias {
+.time-passed {
     color: var(--cl-fg-secondary);
-}
-.author-bar .date {
-    background-color: var(--cl-bg-body);
-    color: var(--cl-fg-secondary);
-    padding: var(--p-s);
-    border-radius: var(--br);
-}
-.author-bar .date i {
-    color: var(--cl-accent-mid-dark);
-}
-.author-bar .date i::before {margin: 0;}
-
-.tags {
-    padding: 0 var(--p) var(--p);
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--p-s);
-}
-.tag::before {content: "#";}
-.tag {
-    border-radius: var(--br);
-    padding: var(--p-s) var(--p);
-    background-color: var(--cl-bg-body);
 }
 
 .post-content {
-    background-color: var(--cl-bg-body);
-    border-radius: var(--br);
-    margin: 0 var(--p);
-    padding-top: var(--p);
-}
-.post h3 {
-    font-size: 1.4rem;
-    margin: 0 var(--p) var(--p);
-}
-.post-content p {
-    line-height: 1.6;
-    margin: 0 var(--p) var(--p);
-    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--p);
 }
 
-.post-content p:last-child {
-    padding-bottom: var(--p);
-    margin-bottom: 0;
+.post-title {
+    font-size: 1.8rem;
+    margin: 0;
+}
+.post-title a {
+    display: block;
+    text-decoration: none;
+}
+.text {
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--p-s);
+    align-items: flex-start;
+}
+.text p {
+    line-height: 1.4;
+    margin: 0;
+}
+.text blockquote {
+    padding: var(--p);
+    border-radius: var(--br);
+    background-color: var(--cl-bg-containers);
+    position: relative;
+    display: inline-block;
+}
+.text blockquote::before {
+    content: "«";
+    display: inline-block;
+    font-size: 2rem;
+    position: absolute;
+    color: var(--cl-accent-light);
+    top: 0;
+    left: var(--p);
+    transform: translateY(-50%);
+}
+/* .post-text blockquote::after {
+    content: "»";
+    display: inline-block;
+    font-size: 2rem;
+    position: absolute;
+    color: var(--cl-accent-light);
+    bottom: 0;
+    right: var(--p);
+    transform: translateY(50%);
+} */
+.text ul {
+    list-style-type: "- ";
+    list-style-position: inside;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--p-s));
+}
+
+.comment-section.nested {
+    padding-left: 2rem;
+    position: relative;
+}
+.comment-section.nested .first-comments,
+.parent .comment-body {
+    position: relative;
+}
+.comment-section.nested .first-comments::before,
+.parent>.comment-body::before {
+    content: "";
+    position: absolute;
+    left: -1rem;
+    top: 0;
+    width: 1px;
+    background-color: var(--cl-accent-light);
+    height: 100%;
+}
+.parent>.comment-body::before {
+        left: 1rem;
+
+}
+.commentator-title {
+    display: flex;
+    gap: var(--p-s);
+    align-items: center;
+}
+.commentator-title a {
+    text-decoration: none;
+    font-weight: 700;
+}
+.comment-body {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: var(--p-s);
+    padding-left: 2.5rem;
+    gap: calc(var(--p-s) / 2);
+}
+.comment .text * {
+    max-width: 100%;
+    word-wrap: break-word;
+}
+.commentator-pfp {
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+    background-size: cover;
+    border-radius: 100%;
+    position: relative;
+}
+.comment-section.nested .commentator-pfp::before,
+.comments-placeholder::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: calc(50% - 1rem);
+    right: 100%;
+    width: calc(1rem - 1px);
+    height: 1rem;
+    border-radius: 0 0 0 100%;
+    border-bottom: 1px solid var(--cl-accent-light);
+    border-left: 1px solid var(--cl-accent-light);
+    padding: 0;
+    z-index: 1;
+}
+.comments-placeholder::before {
+    left: 1rem;
 }
 .toolbar {
     display: flex;
     flex-wrap: wrap;
-    padding: var(--p);
     justify-content: space-between;
     align-items: center;
     gap: var(--p-s);
 }
-
-.rating {
-    display: flex;
+.vote-block {
+    display: inline-flex;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--cl-bg-body);
     border-radius: var(--br);
     overflow: hidden;
+    background-color: var(--cl-bg-body);
 }
 
-.rating i {cursor: pointer;}
-
-.rating i::before {
+.vote-btn {
+    border: none;
     margin: 0;
-}
-
-.rating .ni-angle-up {
-    color: var(--cl-fg-good);
-    padding: var(--p-s) var(--p);
+    display: inline-block;
+    font-size: inherit;
+    background-color: transparent;
+    cursor: pointer;
+    padding: var(--p-s);
     border-radius: var(--br);
 }
-.rating .ni-angle-up:hover {
+.vote-btn.upvote {
+    color: var(--cl-fg-good);
+}
+.vote-btn.upvote:hover {
     background-color: var(--cl-fg-good);
     color: var(--cl-bg-body);
 }
-
-.rating .ni-angle-down {
+.vote-btn.downvote {
     color: var(--cl-fg-bad);
-    padding: var(--p-s) var(--p);
-    border-radius: var(--br);
 }
-.rating .ni-angle-down:hover {
+.vote-btn.downvote:hover {
     background-color: var(--cl-fg-bad);
     color: var(--cl-bg-body);
 }
 
-.rate {
+.vote-rating {
     position: relative;
     padding: var(--p-s);
 }
-
-/* .rate::before {
-    content: "";
-    position: absolute;
-    right: 100%;
-    top: 0;
-    width: var(--br);
-    height: 100%;
-    background-color: var(--cl-bg-body);
-    border-radius: var(--br) 0 0 var(--br);
-}
-
-.rate::after {
-    content: "";
-    position: absolute;
-    left: 100%;
-    top: 0;
-    width: var(--br);
-    height: 100%;
-    background-color: var(--cl-bg-body);
-    border-radius: 0 var(--br) var(--br) 0;
-} */
 
 .toolbar .actions {
     display: flex;
@@ -195,13 +235,116 @@
     background-color: var(--cl-bg-body);
     color: var(--cl-accent-dark);
     cursor: pointer;
-    border-radius: var(--br);
+    border-radius: var(--br-l);
     padding: var(--p-s);
     flex-wrap: nowrap;
+    text-decoration: none;
+    font: inherit;
+    border: none;
 }
-
+.action.destructive {
+    color: var(--cl-fg-bad);
+} 
 .action:hover {
     background-color: var(--cl-accent-light);
 }
-.action i {display: inline-block; width: 1rem;}
-.action i::before {margin: 0;}
+.action.destructive:hover {
+    background-color: var(--cl-fg-bad);
+    color: var(--cl-bg-body);
+}
+.post-content .action {
+    padding: var(--p-s) var(--p);
+}
+
+.post-content .action, 
+.post-content .vote-block {
+    border: 1px solid var(--cl-accent-light);
+}
+.post-content .action.destructive {
+    border-color: var(--cl-bg-bad);
+} 
+
+/* .secondary-actions {} */
+
+.toolbar i {display: inline-block; width: 1rem;}
+.toolbar i::before {margin: 0;}
+
+
+.bottom-action-bar {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    max-width: var(--w-content-max);
+    z-index: 100;    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--p-s);
+    align-items: center;
+    padding: var(--p) 0;
+    border-top: 1px solid var(--cl-accent-light);
+    background-color: var(--cl-bg-body);
+    z-index: 100;
+    margin-top: var(--p-cont);
+}
+.bottom-action-bar form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--p-s);
+    width: 100%;
+}
+.bottom-action-bar .reply {
+    display: flex;
+    gap: var(--p-s);
+    align-items: center;
+}
+
+.bottom-action-bar .comment-input-container {
+    display: flex;
+    gap: var(--p-s);
+    width: 100%;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.bottom-action-bar textarea {
+    width: 100%;
+    height: auto;
+    resize: both;
+    overflow: hidden; 
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    padding: var(--p);
+    border-radius: var(--br);
+    background-color: var(--cl-bg-body);
+    border: 1px solid var(--cl-accent-light);
+    font: inherit;
+}
+.bottom-action-bar .button {
+    border: none;
+}
+.bottom-action-bar .button-inline {
+    padding: 0.1rem 0.6rem 0.1rem 0.3rem;
+}
+.comments-placeholder {
+    margin-bottom: var(--p-s);
+}
+.comments-placeholder a {
+    display: flex;
+    gap: var(--p-s);
+    align-items: center;
+    text-decoration: none;
+}
+.plus-in-circle {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100%;
+    border: 1px solid var(--cl-accent-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    color: var(--cl-accent-mid-dark);
+}

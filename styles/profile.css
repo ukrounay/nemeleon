@@ -1,0 +1,134 @@
+header {
+    margin-bottom: var(--p-cont);
+    width: 100%;
+    display: flex;
+    gap: var(--p-l);
+}
+.profile-image-container {
+    width: 100%;
+    max-width: 8rem;
+}
+.profile-image {
+    display: block;
+    position: relative;
+    width: 100%;
+    border-radius: 100%;
+    background-size: cover;
+    padding-top: 100%;
+}
+.details {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: var(--p-s);
+    padding: var(--p-l) 0;
+    justify-content: center;
+}
+.details .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--p-s);
+}
+.user-content {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: var(--p-cont);
+}
+.user-colors {
+    display: flex;
+    flex-direction: column;
+    /* gap: var(--p-s); */
+}
+.gradient {
+    height: var(--p-cont);
+    width: 100%;
+    border: 1px solid #80808080;
+    border-radius: var(--br);
+}
+.badge {
+    text-decoration: none;
+    background-color: var(--color);
+    color: var(--contrast-color);
+}
+.user-colors .badge {
+    display: inline-block;
+    padding: var(--p-s);
+    border: 1px solid #80808080;
+}
+.horisontal-list {
+    display: flex;
+    padding: var(--p-s) 0;
+    gap: var(--p-s);
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+
+.tabs-nav {
+    display: inline-flex;
+    gap: var(--p-s);
+    padding: var(--p-s);
+    background-color: var(--cl-bg-secondary);
+    border-radius: var(--br-outer);
+}
+
+.tab {
+    color: var(--cl-accent-dark);
+    font:inherit;
+    font-weight: 700;
+    padding: var(--p-s) var(--p);
+    border-radius: var(--br);
+    border: none;
+    background-color: transparent;
+}
+.tab.active {
+    background-color: var(--cl-accent-mid-dark);
+    color: var(--cl-bg-primary);
+}
+.tab-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--p-s);
+    padding: var(--p-l) 0;
+}
+
+.brief-post {
+    /* font-size: 1.2rem; */
+    display: flex;
+    justify-content: space-between;
+    padding: var(--p) var(--p-l);
+    border-radius: var(--br);
+}
+.brief-post:hover {
+    background-color: var(--cl-bg-secondary);
+}
+.brief-post a:not(.badge) {
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--cl-accent-dark);
+}
+
+@media screen and (max-width: 600px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--p);
+        padding: var(--p-l) 0;
+        margin: 0;
+    }
+    header .details {
+        width: 100%;
+        padding: 0;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+    .user-content {
+        grid-template-columns: 1fr;
+    }
+    .details .actions {
+        align-items: center;
+        justify-content: center;
+    }
+}
